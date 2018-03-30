@@ -17,6 +17,3 @@ basic ns-3 (netanim and ns-3-dev) is to type:
 ./build.py
 and cd into ns-3-dev for further work.  Consult the bake documentation
 on how to use bake to access optional ns-3 components.
-
-Some files changed to support LTE - mininet integration. Before running a mininet topology with LTE, following coommand should be run under ns-3 folder:
-sudo ./waf shell 
