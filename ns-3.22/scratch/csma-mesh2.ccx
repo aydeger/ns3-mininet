@@ -1,0 +1,211 @@
+/* -*- Mode:C++; c-file-style:"gnu"; indent-tabs-mode:nil; -*- */
+/*
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation;
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
+// Network topology
+//
+//       n0    n1   n2   n3
+//       |     |    |    |
+//     =====================
+//
+//  node n0,n1,n3 pings to node n2
+//  node n0 generates protocol 2 (IGMP) to node n3
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cassert>
+
+#include "ns3/core-module.h"
+#include "ns3/network-module.h"
+#include "ns3/csma-module.h"
+#include "ns3/applications-module.h"
+#include "ns3/internet-module.h"
+
+using namespace ns3;
+
+NS_LOG_COMPONENT_DEFINE ("CsmaMesh");
+
+
+int
+main (int argc, char *argv[])
+{
+    LogComponentEnable("OnOffApplication",LOG_LEVEL_INFO);
+    LogComponentEnable("PacketSink",LOG_LEVEL_INFO)  ;
+
+    LogComponentEnable("OnOffApplication",LOG_PREFIX_ALL);
+    LogComponentEnable("PacketSink",LOG_PREFIX_ALL) ;
+
+    LogComponentEnable("V4Ping",LOG_LEVEL_INFO);
+    LogComponentEnable("V4Ping",LOG_PREFIX_ALL);
+
+
+  CommandLine cmd;
+  cmd.Parse (argc, argv);
+
+  // Here, we will explicitly create four nodes.
+  NS_LOG_INFO ("Create nodes.");
+  NodeContainer nodesContainer;
+  NodeContainer nodesContainerRight;
+  nodeContainer.Create (2);
+  nodeContainerRight.Create (2);
+
+
+  NodeContainer csmaTapNodes; 
+  NodeContainer csmaMeshNodes;
+
+  MobilityHelper mobility;
+ 
+  mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel")
+  mobility.Install (nodesContainer) 
+  csmaTapNodes.Add (nodesContainer.Get(0) )
+  csmaMeshNodes.Add (nodesContainer.Get(1) )
+
+  CsmaHelper csma;
+  csma.SetChannelAttribute ("DataRate", DataRateValue (DataRate (5000000)));
+  csma.SetChannelAttribute ("Delay", TimeValue (MilliSeconds (2)));
+
+  NetDeviceContainer csmaDevices = csma.Install (nodesContainer);
+  InternetStackHelper stack;
+  stack.Install (nodesContainer);
+  Ipv4AddressHelper address;
+  address.SetBase ("7.1.0.0","255.255.255.0");
+  Ipv4InterfaceContainer interfaces = address.Assign (csmaDevices);
+
+  nodesContainerRight.Create (2);
+  mobility.Install(nodesContainerRight);
+  csmaTapNodes.Add (nodesContainerRight.Get(0));
+  csmaMeshNodes.Add (nodesContainerRight.Get(1) );
+  csmaDevicesRight = csma.Install (nodesContainerRight);
+  stack.Install(nodesContainerRight);
+  address.SetBase  ("7.2.0.0", "255.255.255.0");
+  Ipv4InterfaceContainer interfacesRight = address.Assign (csmaDevicesRight);
+
+  YansWifiPyhHelper wifiPhy = ns.wifi.YansWifiPhyHelper.Default ()
+  wifiPhy.Set ("EnergyDetectionThreshold", DoubleValue (-89.0) );
+  wifiPhy.Set ("CcaMode1Threshold", DoubleValue (-62.0) );
+  wifiPhy.Set ("TxGain", DoubleValue (1.0) );
+  wifiPhy.Set ("RxGain", DoubleValue (1.0) );
+  wifiPhy.Set ("TxPowerLevels", UintegerValue (1) );
+  wifiPhy.Set ("TxPowerEnd", DoubleValue (18.0) );
+  wifiPhy.Set ("TxPowerStart", DoubleValue (18.0) );
+  wifiPhy.Set ("RxNoiseFigure", DoubleValue (7.0) );
+
+
+  YansWifiChannelHelper wifiChannel = ns.wifi.YansWifiChannelHelper.Default ();
+  wifiPhy.SetChannel (wifiChannel.Create ());
+
+  MeshHelper mesh = ns.mesh.MeshHelper.Default ();
+  mesh.SetStackInstaller("ns3::Dot11sStack")
+  mesh.SetSpreadInterfaceChannels (ns.mesh.MeshHelper.ZERO_CHANNEL)
+  mesh.SetMacType ("RandomStart", ns.core.TimeValue (ns.core.Seconds (0.01)))
+  
+  NetDeviceContainer meshDevices = mesh.Install (wifiPhy, csmaMeshNodes);
+  mobility = ns.mobility.MobilityHelper()
+  mobility.SetPositionAllocator ("ns3::GridPositionAllocator",
+                               "MinX", ns.core.DoubleValue (0.0),
+                               "MinY", ns.core.DoubleValue (0.0),
+                               "DeltaX", ns.core.DoubleValue (100),
+                               "DeltaY", ns.core.DoubleValue (100),
+                               "GridWidth", ns.core.UintegerValue (100),
+                               "LayoutType", ns.core.StringValue ("RowFirst"));
+  mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+  mobility.Install (csmaMeshNodes);
+
+  Ipv4AddressHelper address2 = ns.internet.Ipv4AddressHelper ();
+  address2.SetBase ("10.1.1.0","255.255.255.0");
+  interfaces2 = address2.Assign (meshDevices);
+
+  Ipv4StaticRoutingHeper ipv4RoutingHelper;
+  
+  Ptr<Ipv4StaticRouting> csmaTapStaticRouting = ipv4RoutingHelper.GetStaticRouting(csmaTapNodes.Get(0)->GetObject<Ipv4> ());
+  csmaTapStaticRouting.AddNetworkRouteTo (Ipv4Address("7.2.0.0"),Ipv4Mask("255.255.255.0"), 1);
+  csmaTapStaticRouting.AddNetworkRouteTo (Ipv4Address("10.1.1.0"),Ipv4Mask("255.255.255.0"), 1);
+
+  Ptr<Ipv4StaticRouting> csmaTap2StaticRouting = ipv4RoutingHelper.GetStaticRouting(csmaTapNodes.Get(1)->GetObject<Ipv4> ());
+  csmaTap2StaticRouting.AddNetworkRouteTo (Ipv4Address("7.1.0.0"),Ipv4Mask("255.255.255.0"), 1);
+  csmaTap2StaticRouting.AddNetworkRouteTo (Ipv4Address("10.1.1.0"),Ipv4Mask("255.255.255.0"), 1);
+        
+
+Ptr<Ipv4StaticRouting> csmaMeshStaticRouting = ipv4RoutingHelper.GetStaticRouting(csmaMeshNodes.Get(0)->GetObject<Ipv4> ());
+csmaMeshStaticRouting.AddNetworkRouteTo (Ipv4Address("7.2.0.0"),Ipv4Mask("255.255.255.0"), 2);
+csmaMeshStaticRouting.AddNetworkRouteTo (Ipv4Address("7.1.0.0"),Ipv4Mask("255.255.255.0"), 1);
+csmaMeshStaticRouting.AddNetworkRouteTo (Ipv4Address("10.1.1.0"),Ipv4Mask("255.255.255.0"), 2);
+
+Ptr<Ipv4StaticRouting> csmaMesh2StaticRouting = ipv4RoutingHelper.GetStaticRouting(csmaMeshNodes.Get(1)->GetObject<Ipv4> ());
+csmaMesh2StaticRouting.AddNetworkRouteTo (Ipv4Address("7.1.0.0"),Ipv4Mask("255.255.255.0"), 2);
+csmaMesh2StaticRouting.AddNetworkRouteTo (Ipv4Address("7.2.0.0"),Ipv4Mask("255.255.255.0"), 1);
+csmaMesh2StaticRouting.AddNetworkRouteTo (Ipv4Address("10.1.1.0"),Ipv4Mask("255.255.255.0"), 2);
+
+
+echoServer = ns.applications.UdpEchoServerHelper(9);
+
+serverApps = echoServer.Install(csmaTapNodes.Get(0));
+serverApps.Start(ns.core.Seconds(1.0));
+serverApps.Stop(ns.core.Seconds(10.0));
+
+echoClient = ns.applications.UdpEchoClientHelper(interfaces.GetAddress(0), 9);
+echoClient.SetAttribute("MaxPackets", ns.core.UintegerValue(1));
+echoClient.SetAttribute("Interval", ns.core.TimeValue(ns.core.Seconds (1.0)));
+echoClient.SetAttribute("PacketSize", ns.core.UintegerValue(1024));
+
+clientApps = echoClient.Install(csmaMeshNodes.Get(0));
+clientApps.Start(ns.core.Seconds(2.0));
+clientApps.Stop(ns.core.Seconds(10.0));
+
+Simulator.Run();
+Simulator.Destroy();
+
+
+
+/*  ApplicationContainer apps = onoff.Install (c.Get (0));
+  apps.Start (Seconds (1.0));
+  apps.Stop (Seconds (10.0));
+
+  NS_LOG_INFO ("Create Sink.");
+  PacketSinkHelper sink = PacketSinkHelper ("ns3::Ipv4RawSocketFactory", dst);
+  apps = sink.Install (c.Get (3));
+  apps.Start (Seconds (0.0));
+  apps.Stop (Seconds (11.0));
+
+  NS_LOG_INFO ("Create pinger");
+  V4PingHelper ping = V4PingHelper (addresses.GetAddress (2));
+  NodeContainer pingers;
+  pingers.Add (c.Get (0));
+  pingers.Add (c.Get (1));
+  pingers.Add (c.Get (3));
+  apps = ping.Install (pingers);
+  apps.Start (Seconds (2.0));
+  apps.Stop (Seconds (5.0));
+
+  NS_LOG_INFO ("Configure Tracing.");
+  // first, pcap tracing in non-promiscuous mode
+  //#csma.EnablePcapAll ("csma-ping", false);
+
+  // then, print what the packet sink receives.
+  //Config::ConnectWithoutContext ("/NodeList/3/ApplicationList/0/$ns3::PacketSink/Rx", 
+  //                               MakeCallback (&SinkRx));
+  // finally, print the ping rtts.
+  //Config::Connect ("/NodeList/*/ApplicationList/*/$ns3::V4Ping/Rtt",
+  //                 MakeCallback (&PingRtt));
+
+  Packet::EnablePrinting ();
+
+
+  NS_LOG_INFO ("Run Simulation.");
+  Simulator::Run ();
+  Simulator::Destroy (); */
+  NS_LOG_INFO ("Done.");
+}

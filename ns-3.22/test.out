@@ -1,0 +1,919 @@
+-1 CsmaNetDevice:CsmaNetDevice(0xf96ad0)
+-1 CsmaNetDevice:SetMtu(0xf96ad0, 1500)
+-1 m_encapMode = 1
+-1 m_mtu = 1500
+-1 CsmaNetDevice:SetEncapsulationMode(1)
+-1 m_encapMode = 1
+-1 m_mtu = 1500
+-1 CsmaNetDevice:SetAddress()
+-1 CsmaNetDevice:SetNode(0xd20b40)
+-1 CsmaNetDevice:SetIfIndex(0)
+-1 CsmaNetDevice:SetReceiveCallback(0x7ffdf49c5ce0)
+-1 CsmaNetDevice:SetQueue(0xf96d40)
+-1 CsmaNetDevice:Attach(0xf96ad0, 0x7ffdf49c5d90)
+-1 CsmaNetDevice:NotifyLinkUp()
+-1 CsmaNetDevice:CsmaNetDevice(0xf96e70)
+-1 CsmaNetDevice:SetMtu(0xf96e70, 1500)
+-1 m_encapMode = 1
+-1 m_mtu = 1500
+-1 CsmaNetDevice:SetEncapsulationMode(1)
+-1 m_encapMode = 1
+-1 m_mtu = 1500
+-1 CsmaNetDevice:SetAddress()
+-1 CsmaNetDevice:SetNode(0xf963e0)
+-1 CsmaNetDevice:SetIfIndex(0)
+-1 CsmaNetDevice:SetReceiveCallback(0x7ffdf49c5ce0)
+-1 CsmaNetDevice:SetQueue(0xf973f0)
+-1 CsmaNetDevice:Attach(0xf96e70, 0x7ffdf49c5d90)
+-1 CsmaNetDevice:NotifyLinkUp()
+-1 ArpL3Protocol:ArpL3Protocol(0xf97a90)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 ArpL3Protocol:SetNode(0xf97a90, 0xd20b40)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 Icmpv4L4Protocol:Icmpv4L4Protocol(0xf97ec0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf97ec0)
+-1 Icmpv4L4Protocol:SetNode(0xf97ec0, 0xd20b40)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf97ec0)
+-1 Icmpv4L4Protocol:SetDownTarget(0xf97ec0, 0x7ffdf49c5cb0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf97ec0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf97ec0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf97ec0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf97ec0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf97ec0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf97ec0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf97ec0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf97ec0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf97ec0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf97ec0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf97ec0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf97a90)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf97ec0)
+-1 ArpL3Protocol:ArpL3Protocol(0xf98950)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 ArpL3Protocol:SetNode(0xf98950, 0xf963e0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 Icmpv4L4Protocol:Icmpv4L4Protocol(0xf99b60)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf99b60)
+-1 Icmpv4L4Protocol:SetNode(0xf99b60, 0xf963e0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf99b60)
+-1 Icmpv4L4Protocol:SetDownTarget(0xf99b60, 0x7ffdf49c5cb0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf99b60)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf99b60)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf99b60)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf99b60)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf99b60)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf99b60)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf99b60)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf99b60)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf99b60)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf99b60)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf99b60)
+-1 ArpL3Protocol:NotifyNewAggregate(0xf98950)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf99b60)
+-1 CsmaNetDevice:GetNode()
+-1 CsmaNetDevice:NeedsArp()
+-1 ArpL3Protocol:CreateCache(0xf97a90, 0xf96ad0, 0xf9acd0)
+-1 CsmaNetDevice:IsBroadcast()
+-1 CsmaNetDevice:AddLinkChangeCallback(0x7ffdf49c5c30)
+-1 CsmaNetDevice:GetMtu()
+-1 CsmaNetDevice:GetNode()
+-1 CsmaNetDevice:NeedsArp()
+-1 ArpL3Protocol:CreateCache(0xf98950, 0xf96e70, 0xf9be00)
+-1 CsmaNetDevice:IsBroadcast()
+-1 CsmaNetDevice:AddLinkChangeCallback(0x7ffdf49c5c30)
+-1 CsmaNetDevice:GetMtu()
+-1 CsmaNetDevice:GetAddress()
+-1 CsmaNetDevice:SetReceiveCallback(0x7ffdf49c5840)
+-1 CsmaNetDevice:SetPromiscReceiveCallback(0x7ffdf49c5840)
+-1 CsmaNetDevice:CsmaNetDevice(0xfad6a0)
+-1 CsmaNetDevice:SetMtu(0xfad6a0, 1500)
+-1 m_encapMode = 1
+-1 m_mtu = 1500
+-1 CsmaNetDevice:SetEncapsulationMode(1)
+-1 m_encapMode = 1
+-1 m_mtu = 1500
+-1 CsmaNetDevice:SetAddress()
+-1 CsmaNetDevice:SetNode(0xfad2f0)
+-1 CsmaNetDevice:SetIfIndex(0)
+-1 CsmaNetDevice:SetReceiveCallback(0x7ffdf49c5ce0)
+-1 CsmaNetDevice:SetQueue(0xfad8d0)
+-1 CsmaNetDevice:Attach(0xfad6a0, 0x7ffdf49c5d90)
+-1 CsmaNetDevice:NotifyLinkUp()
+-1 CsmaNetDevice:CsmaNetDevice(0xfad9a0)
+-1 CsmaNetDevice:SetMtu(0xfad9a0, 1500)
+-1 m_encapMode = 1
+-1 m_mtu = 1500
+-1 CsmaNetDevice:SetEncapsulationMode(1)
+-1 m_encapMode = 1
+-1 m_mtu = 1500
+-1 CsmaNetDevice:SetAddress()
+-1 CsmaNetDevice:SetNode(0xfad380)
+-1 CsmaNetDevice:SetIfIndex(0)
+-1 CsmaNetDevice:SetReceiveCallback(0x7ffdf49c5ce0)
+-1 CsmaNetDevice:SetQueue(0xfadef0)
+-1 CsmaNetDevice:Attach(0xfad9a0, 0x7ffdf49c5d90)
+-1 CsmaNetDevice:NotifyLinkUp()
+-1 ArpL3Protocol:ArpL3Protocol(0xfae570)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 ArpL3Protocol:SetNode(0xfae570, 0xfad2f0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 Icmpv4L4Protocol:Icmpv4L4Protocol(0xfae9a0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfae9a0)
+-1 Icmpv4L4Protocol:SetNode(0xfae9a0, 0xfad2f0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfae9a0)
+-1 Icmpv4L4Protocol:SetDownTarget(0xfae9a0, 0x7ffdf49c5cb0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfae9a0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfae9a0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfae9a0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfae9a0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfae9a0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfae9a0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfae9a0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfae9a0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfae9a0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfae9a0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfae9a0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae570)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfae9a0)
+-1 ArpL3Protocol:ArpL3Protocol(0xfaf430)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 ArpL3Protocol:SetNode(0xfaf430, 0xfad380)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 Icmpv4L4Protocol:Icmpv4L4Protocol(0xfb0640)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfb0640)
+-1 Icmpv4L4Protocol:SetNode(0xfb0640, 0xfad380)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfb0640)
+-1 Icmpv4L4Protocol:SetDownTarget(0xfb0640, 0x7ffdf49c5cb0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfb0640)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfb0640)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfb0640)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfb0640)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfb0640)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfb0640)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfb0640)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfb0640)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfb0640)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfb0640)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfb0640)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfaf430)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfb0640)
+-1 CsmaNetDevice:GetNode()
+-1 CsmaNetDevice:NeedsArp()
+-1 ArpL3Protocol:CreateCache(0xfae570, 0xfad6a0, 0xfb17b0)
+-1 CsmaNetDevice:IsBroadcast()
+-1 CsmaNetDevice:AddLinkChangeCallback(0x7ffdf49c5c30)
+-1 CsmaNetDevice:GetMtu()
+-1 CsmaNetDevice:GetNode()
+-1 CsmaNetDevice:NeedsArp()
+-1 ArpL3Protocol:CreateCache(0xfaf430, 0xfad9a0, 0xfb25e0)
+-1 CsmaNetDevice:IsBroadcast()
+-1 CsmaNetDevice:AddLinkChangeCallback(0x7ffdf49c5c30)
+-1 CsmaNetDevice:GetMtu()
+-1 CsmaNetDevice:GetAddress()
+-1 CsmaNetDevice:SetReceiveCallback(0x7ffdf49c5840)
+-1 CsmaNetDevice:SetPromiscReceiveCallback(0x7ffdf49c5840)
+-1 ArpL3Protocol:ArpL3Protocol(0xfae0a0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 ArpL3Protocol:SetNode(0xfae0a0, 0xfc3990)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 Icmpv4L4Protocol:Icmpv4L4Protocol(0xf96550)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf96550)
+-1 Icmpv4L4Protocol:SetNode(0xf96550, 0xfc3990)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf96550)
+-1 Icmpv4L4Protocol:SetDownTarget(0xf96550, 0x7ffdf49c5cc0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf96550)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf96550)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf96550)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf96550)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf96550)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf96550)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf96550)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf96550)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf96550)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf96550)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf96550)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfae0a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xf96550)
+-1 ArpL3Protocol:ArpL3Protocol(0xfc98a0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 ArpL3Protocol:SetNode(0xfc98a0, 0xfc61d0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:Icmpv4L4Protocol(0xfc9a70)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfc9a70)
+-1 Icmpv4L4Protocol:SetNode(0xfc9a70, 0xfc61d0)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfc9a70)
+-1 Icmpv4L4Protocol:SetDownTarget(0xfc9a70, 0x7ffdf49c5220)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfc9a70)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfc9a70)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfc9a70)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfc9a70)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfc9a70)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfc9a70)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfc9a70)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfc9a70)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfc9a70)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfc9a70)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfc9a70)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfc9a70)
+-1 ArpL3Protocol:NotifyNewAggregate(0xfc98a0)
+-1 Icmpv4L4Protocol:NotifyNewAggregate(0xfc9a70)
+*** Configuring hosts
+h1 h2 
+*** Starting controller
+c0 
+*** Starting 0 switches
+
+-1 CsmaNetDevice:GetNode()
+-1 CsmaNetDevice:GetAddress()
+-1 CsmaNetDevice:SetAddress()
+-1 CsmaNetDevice:GetNode()
+-1 CsmaNetDevice:GetAddress()
+-1 CsmaNetDevice:SetAddress()
+2 CsmaNetDevice:Send(0x7f9568001790, 02-06-33:33:00:00:00:16, 34525)
+2 CsmaNetDevice:SendFrom(0x7f9568001790, 02-06-ea:36:d6:88:77:46, 02-06-33:33:00:00:00:16, 34525)
+2 packet =0x7f9568001790
+2 UID is 0)
+2 Sending From : 02-06-ea:36:d6:88:77:46 To : 02-06-33:33:00:00:00:16
+2 CsmaNetDevice:IsLinkUp()
+2 CsmaNetDevice:IsSendEnabled()
+2 CsmaNetDevice:AddHeader(0x7f9568001790, ea:36:d6:88:77:46, 33:33:00:00:00:16, 34525)
+2 p->GetSize () = 76
+2 m_encapMode = 1
+2 m_mtu = 1500
+2 Encapsulating packet as DIX (type interpretation)
+2 header.SetLengthType (34525)
+2 CsmaNetDevice:TransmitStart()
+2 m_currentPkt = 0x7f9568001790
+2 UID = 0
+2 CsmaNetDevice:IsSendEnabled()
+2 Schedule TransmitCompleteEvent in 1.75e-07sec
+2 CsmaNetDevice:TransmitCompleteEvent()
+2 m_currentPkt=0x7f9568001790
+2 Pkt UID is 0)
+2 CsmaNetDevice:GetNode()
+2 CsmaNetDevice:GetNode()
+2 Schedule TransmitReadyEvent in 2.2e-08sec
+2 CsmaNetDevice:Receive(0x7f9568002ad0, 0xfad6a0)
+2 UID is 0
+3 CsmaNetDevice:Receive(0x7f95680040e0, 0xfad6a0)
+3 UID is 0
+3 CsmaNetDevice:IsReceiveEnabled()
+3 Received, Pkt source is ea:36:d6:88:77:46 destination is 33:33:00:00:00:16
+3 CsmaNetDevice:GetAddress()
+2 CsmaNetDevice:TransmitReadyEvent()
+0 CsmaNetDevice:Send(0x7f95680040e0, 02-06-33:33:00:00:00:16, 34525)
+0 CsmaNetDevice:SendFrom(0x7f95680040e0, 02-06-fe:06:eb:13:bb:dd, 02-06-33:33:00:00:00:16, 34525)
+0 packet =0x7f95680040e0
+0 UID is 1)
+0 Sending From : 02-06-fe:06:eb:13:bb:dd To : 02-06-33:33:00:00:00:16
+0 CsmaNetDevice:IsLinkUp()
+0 CsmaNetDevice:IsSendEnabled()
+0 CsmaNetDevice:AddHeader(0x7f95680040e0, fe:06:eb:13:bb:dd, 33:33:00:00:00:16, 34525)
+0 p->GetSize () = 76
+0 m_encapMode = 1
+0 m_mtu = 1500
+0 Encapsulating packet as DIX (type interpretation)
+0 header.SetLengthType (34525)
+0 CsmaNetDevice:TransmitStart()
+0 m_currentPkt = 0x7f95680040e0
+0 UID = 1
+0 CsmaNetDevice:IsSendEnabled()
+0 Schedule TransmitCompleteEvent in 1.75e-07sec
+0 CsmaNetDevice:TransmitCompleteEvent()
+0 m_currentPkt=0x7f95680040e0
+0 Pkt UID is 1)
+0 CsmaNetDevice:GetNode()
+0 CsmaNetDevice:GetNode()
+0 Schedule TransmitReadyEvent in 2.2e-08sec
+0 CsmaNetDevice:Receive(0x7f9568002ad0, 0xf96ad0)
+0 UID is 1
+1 CsmaNetDevice:Receive(0x7f9568004150, 0xf96ad0)
+1 UID is 1
+1 CsmaNetDevice:IsReceiveEnabled()
+1 Received, Pkt source is fe:06:eb:13:bb:dd destination is 33:33:00:00:00:16
+1 CsmaNetDevice:GetAddress()
+0 CsmaNetDevice:TransmitReadyEvent()
+0 CsmaNetDevice:Send(0x7f9568024a60, 02-06-33:33:00:00:00:16, 34525)
+0 CsmaNetDevice:SendFrom(0x7f9568024a60, 02-06-fe:06:eb:13:bb:dd, 02-06-33:33:00:00:00:16, 34525)
+0 packet =0x7f9568024a60
+0 UID is 2)
+0 Sending From : 02-06-fe:06:eb:13:bb:dd To : 02-06-33:33:00:00:00:16
+0 CsmaNetDevice:IsLinkUp()
+0 CsmaNetDevice:IsSendEnabled()
+0 CsmaNetDevice:AddHeader(0x7f9568024a60, fe:06:eb:13:bb:dd, 33:33:00:00:00:16, 34525)
+0 p->GetSize () = 76
+0 m_encapMode = 1
+0 m_mtu = 1500
+0 Encapsulating packet as DIX (type interpretation)
+0 header.SetLengthType (34525)
+0 CsmaNetDevice:TransmitStart()
+0 m_currentPkt = 0x7f9568024a60
+0 UID = 2
+0 CsmaNetDevice:IsSendEnabled()
+0 Schedule TransmitCompleteEvent in 1.75e-07sec
+0 CsmaNetDevice:TransmitCompleteEvent()
+0 m_currentPkt=0x7f9568024a60
+0 Pkt UID is 2)
+0 CsmaNetDevice:GetNode()
+0 CsmaNetDevice:GetNode()
+0 Schedule TransmitReadyEvent in 2.2e-08sec
+0 CsmaNetDevice:Receive(0x7f95680040e0, 0xf96ad0)
+0 UID is 2
+1 CsmaNetDevice:Receive(0x7f9568025b90, 0xf96ad0)
+1 UID is 2
+1 CsmaNetDevice:IsReceiveEnabled()
+1 Received, Pkt source is fe:06:eb:13:bb:dd destination is 33:33:00:00:00:16
+1 CsmaNetDevice:GetAddress()
+0 CsmaNetDevice:TransmitReadyEvent()
+*** Starting CLI:
+2 CsmaNetDevice:Send(0x7f9568025b90, 02-06-33:33:00:00:00:16, 34525)
+2 CsmaNetDevice:SendFrom(0x7f9568025b90, 02-06-ea:36:d6:88:77:46, 02-06-33:33:00:00:00:16, 34525)
+2 packet =0x7f9568025b90
+2 UID is 3)
+2 Sending From : 02-06-ea:36:d6:88:77:46 To : 02-06-33:33:00:00:00:16
+2 CsmaNetDevice:IsLinkUp()
+2 CsmaNetDevice:IsSendEnabled()
+2 CsmaNetDevice:AddHeader(0x7f9568025b90, ea:36:d6:88:77:46, 33:33:00:00:00:16, 34525)
+2 p->GetSize () = 76
+2 m_encapMode = 1
+2 m_mtu = 1500
+2 Encapsulating packet as DIX (type interpretation)
+2 header.SetLengthType (34525)
+2 CsmaNetDevice:TransmitStart()
+2 m_currentPkt = 0x7f9568025b90
+2 UID = 3
+2 CsmaNetDevice:IsSendEnabled()
+2 Schedule TransmitCompleteEvent in 1.75e-07sec
+2 CsmaNetDevice:TransmitCompleteEvent()
+2 m_currentPkt=0x7f9568025b90
+2 Pkt UID is 3)
+2 CsmaNetDevice:GetNode()
+2 CsmaNetDevice:GetNode()
+2 Schedule TransmitReadyEvent in 2.2e-08sec
+2 CsmaNetDevice:Receive(0x7f9568001790, 0xfad6a0)
+2 UID is 3
+3 CsmaNetDevice:Receive(0x7f95680040e0, 0xfad6a0)
+3 UID is 3
+3 CsmaNetDevice:IsReceiveEnabled()
+3 Received, Pkt source is ea:36:d6:88:77:46 destination is 33:33:00:00:00:16
+3 CsmaNetDevice:GetAddress()
+2 CsmaNetDevice:TransmitReadyEvent()
+0 CsmaNetDevice:Send(0x7f95680040e0, 02-06-33:33:00:00:00:16, 34525)
+0 CsmaNetDevice:SendFrom(0x7f95680040e0, 02-06-fe:06:eb:13:bb:dd, 02-06-33:33:00:00:00:16, 34525)
+0 packet =0x7f95680040e0
+0 UID is 4)
+0 Sending From : 02-06-fe:06:eb:13:bb:dd To : 02-06-33:33:00:00:00:16
+0 CsmaNetDevice:IsLinkUp()
+0 CsmaNetDevice:IsSendEnabled()
+0 CsmaNetDevice:AddHeader(0x7f95680040e0, fe:06:eb:13:bb:dd, 33:33:00:00:00:16, 34525)
+0 p->GetSize () = 76
+0 m_encapMode = 1
+0 m_mtu = 1500
+0 Encapsulating packet as DIX (type interpretation)
+0 header.SetLengthType (34525)
+0 CsmaNetDevice:TransmitStart()
+0 m_currentPkt = 0x7f95680040e0
+0 UID = 4
+0 CsmaNetDevice:IsSendEnabled()
+0 Schedule TransmitCompleteEvent in 1.75e-07sec
+0 CsmaNetDevice:TransmitCompleteEvent()
+0 m_currentPkt=0x7f95680040e0
+0 Pkt UID is 4)
+0 CsmaNetDevice:GetNode()
+0 CsmaNetDevice:GetNode()
+0 Schedule TransmitReadyEvent in 2.2e-08sec
+0 CsmaNetDevice:Receive(0x7f9568024a60, 0xf96ad0)
+0 UID is 4
+1 CsmaNetDevice:Receive(0x7f9568001790, 0xf96ad0)
+1 UID is 4
+1 CsmaNetDevice:IsReceiveEnabled()
+1 Received, Pkt source is fe:06:eb:13:bb:dd destination is 33:33:00:00:00:16
+1 CsmaNetDevice:GetAddress()
+0 CsmaNetDevice:TransmitReadyEvent()
+0 CsmaNetDevice:Send(0x7f9568001790, 02-06-33:33:ff:13:bb:dd, 34525)
+0 CsmaNetDevice:SendFrom(0x7f9568001790, 02-06-fe:06:eb:13:bb:dd, 02-06-33:33:ff:13:bb:dd, 34525)
+0 packet =0x7f9568001790
+0 UID is 5)
+0 Sending From : 02-06-fe:06:eb:13:bb:dd To : 02-06-33:33:ff:13:bb:dd
+0 CsmaNetDevice:IsLinkUp()
+0 CsmaNetDevice:IsSendEnabled()
+0 CsmaNetDevice:AddHeader(0x7f9568001790, fe:06:eb:13:bb:dd, 33:33:ff:13:bb:dd, 34525)
+0 p->GetSize () = 64
+0 m_encapMode = 1
+0 m_mtu = 1500
+0 Encapsulating packet as DIX (type interpretation)
+0 header.SetLengthType (34525)
+0 CsmaNetDevice:TransmitStart()
+0 m_currentPkt = 0x7f9568001790
+0 UID = 5
+0 CsmaNetDevice:IsSendEnabled()
+0 Schedule TransmitCompleteEvent in 1.52e-07sec
+0 CsmaNetDevice:TransmitCompleteEvent()
+0 m_currentPkt=0x7f9568001790
+0 Pkt UID is 5)
+0 CsmaNetDevice:GetNode()
+0 CsmaNetDevice:GetNode()
+0 Schedule TransmitReadyEvent in 2.2e-08sec
+0 CsmaNetDevice:Receive(0x7f95680040e0, 0xf96ad0)
+0 UID is 5
+1 CsmaNetDevice:Receive(0x7f9568024a60, 0xf96ad0)
+1 UID is 5
+1 CsmaNetDevice:IsReceiveEnabled()
+1 Received, Pkt source is fe:06:eb:13:bb:dd destination is 33:33:ff:13:bb:dd
+1 CsmaNetDevice:GetAddress()
+0 CsmaNetDevice:TransmitReadyEvent()
+2 CsmaNetDevice:Send(0x7f9568024a60, 02-06-33:33:00:00:00:16, 34525)
+2 CsmaNetDevice:SendFrom(0x7f9568024a60, 02-06-ea:36:d6:88:77:46, 02-06-33:33:00:00:00:16, 34525)
+2 packet =0x7f9568024a60
+2 UID is 6)
+2 Sending From : 02-06-ea:36:d6:88:77:46 To : 02-06-33:33:00:00:00:16
+2 CsmaNetDevice:IsLinkUp()
+2 CsmaNetDevice:IsSendEnabled()
+2 CsmaNetDevice:AddHeader(0x7f9568024a60, ea:36:d6:88:77:46, 33:33:00:00:00:16, 34525)
+2 p->GetSize () = 76
+2 m_encapMode = 1
+2 m_mtu = 1500
+2 Encapsulating packet as DIX (type interpretation)
+2 header.SetLengthType (34525)
+2 CsmaNetDevice:TransmitStart()
+2 m_currentPkt = 0x7f9568024a60
+2 UID = 6
+2 CsmaNetDevice:IsSendEnabled()
+2 Schedule TransmitCompleteEvent in 1.75e-07sec
+2 CsmaNetDevice:TransmitCompleteEvent()
+2 m_currentPkt=0x7f9568024a60
+2 Pkt UID is 6)
+2 CsmaNetDevice:GetNode()
+2 CsmaNetDevice:GetNode()
+2 Schedule TransmitReadyEvent in 2.2e-08sec
+2 CsmaNetDevice:Receive(0x7f9568025b90, 0xfad6a0)
+2 UID is 6
+3 CsmaNetDevice:Receive(0x7f95680040e0, 0xfad6a0)
+3 UID is 6
+3 CsmaNetDevice:IsReceiveEnabled()
+3 Received, Pkt source is ea:36:d6:88:77:46 destination is 33:33:00:00:00:16
+3 CsmaNetDevice:GetAddress()
+2 CsmaNetDevice:TransmitReadyEvent()
+2 CsmaNetDevice:Send(0x7f95680257a0, 02-06-33:33:ff:88:77:46, 34525)
+2 CsmaNetDevice:SendFrom(0x7f95680257a0, 02-06-ea:36:d6:88:77:46, 02-06-33:33:ff:88:77:46, 34525)
+2 packet =0x7f95680257a0
+2 UID is 7)
+2 Sending From : 02-06-ea:36:d6:88:77:46 To : 02-06-33:33:ff:88:77:46
+2 CsmaNetDevice:IsLinkUp()
+2 CsmaNetDevice:IsSendEnabled()
+2 CsmaNetDevice:AddHeader(0x7f95680257a0, ea:36:d6:88:77:46, 33:33:ff:88:77:46, 34525)
+2 p->GetSize () = 64
+2 m_encapMode = 1
+2 m_mtu = 1500
+2 Encapsulating packet as DIX (type interpretation)
+2 header.SetLengthType (34525)
+2 CsmaNetDevice:TransmitStart()
+2 m_currentPkt = 0x7f95680257a0
+2 UID = 7
+2 CsmaNetDevice:IsSendEnabled()
+2 Schedule TransmitCompleteEvent in 1.52e-07sec
+2 CsmaNetDevice:TransmitCompleteEvent()
+2 m_currentPkt=0x7f95680257a0
+2 Pkt UID is 7)
+2 CsmaNetDevice:GetNode()
+2 CsmaNetDevice:GetNode()
+2 Schedule TransmitReadyEvent in 2.2e-08sec
+2 CsmaNetDevice:Receive(0x7f9568024a60, 0xfad6a0)
+2 UID is 7
+3 CsmaNetDevice:Receive(0x7f95680040e0, 0xfad6a0)
+3 UID is 7
+3 CsmaNetDevice:IsReceiveEnabled()
+3 Received, Pkt source is ea:36:d6:88:77:46 destination is 33:33:ff:88:77:46
+3 CsmaNetDevice:GetAddress()
+2 CsmaNetDevice:TransmitReadyEvent()
+0 CsmaNetDevice:Send(0x7f95680040e0, 02-06-33:33:00:00:00:16, 34525)
+0 CsmaNetDevice:SendFrom(0x7f95680040e0, 02-06-fe:06:eb:13:bb:dd, 02-06-33:33:00:00:00:16, 34525)
+0 packet =0x7f95680040e0
+0 UID is 8)
+0 Sending From : 02-06-fe:06:eb:13:bb:dd To : 02-06-33:33:00:00:00:16
+0 CsmaNetDevice:IsLinkUp()
+0 CsmaNetDevice:IsSendEnabled()
+0 CsmaNetDevice:AddHeader(0x7f95680040e0, fe:06:eb:13:bb:dd, 33:33:00:00:00:16, 34525)
+0 p->GetSize () = 76
+0 m_encapMode = 1
+0 m_mtu = 1500
+0 Encapsulating packet as DIX (type interpretation)
+0 header.SetLengthType (34525)
+0 CsmaNetDevice:TransmitStart()
+0 m_currentPkt = 0x7f95680040e0
+0 UID = 8
+0 CsmaNetDevice:IsSendEnabled()
+0 Schedule TransmitCompleteEvent in 1.75e-07sec
+0 CsmaNetDevice:TransmitCompleteEvent()
+0 m_currentPkt=0x7f95680040e0
+0 Pkt UID is 8)
+0 CsmaNetDevice:GetNode()
+0 CsmaNetDevice:GetNode()
+0 Schedule TransmitReadyEvent in 2.2e-08sec
+0 CsmaNetDevice:Receive(0x7f9568001790, 0xf96ad0)
+0 UID is 8
+1 CsmaNetDevice:Receive(0x7f9568024a60, 0xf96ad0)
+1 UID is 8
+1 CsmaNetDevice:IsReceiveEnabled()
+1 Received, Pkt source is fe:06:eb:13:bb:dd destination is 33:33:00:00:00:16
+1 CsmaNetDevice:GetAddress()
+0 CsmaNetDevice:TransmitReadyEvent()
+0 CsmaNetDevice:Send(0x7f9568024a60, 02-06-33:33:00:00:00:02, 34525)
+0 CsmaNetDevice:SendFrom(0x7f9568024a60, 02-06-fe:06:eb:13:bb:dd, 02-06-33:33:00:00:00:02, 34525)
+0 packet =0x7f9568024a60
+0 UID is 9)
+0 Sending From : 02-06-fe:06:eb:13:bb:dd To : 02-06-33:33:00:00:00:02
+0 CsmaNetDevice:IsLinkUp()
+0 CsmaNetDevice:IsSendEnabled()
+0 CsmaNetDevice:AddHeader(0x7f9568024a60, fe:06:eb:13:bb:dd, 33:33:00:00:00:02, 34525)
+0 p->GetSize () = 56
+0 m_encapMode = 1
+0 m_mtu = 1500
+0 Encapsulating packet as DIX (type interpretation)
+0 header.SetLengthType (34525)
+0 CsmaNetDevice:TransmitStart()
+0 m_currentPkt = 0x7f9568024a60
+0 UID = 9
+0 CsmaNetDevice:IsSendEnabled()
+0 Schedule TransmitCompleteEvent in 1.37e-07sec
+0 CsmaNetDevice:TransmitCompleteEvent()
+0 m_currentPkt=0x7f9568024a60
+0 Pkt UID is 9)
+0 CsmaNetDevice:GetNode()
+0 CsmaNetDevice:GetNode()
+0 Schedule TransmitReadyEvent in 2.2e-08sec
+0 CsmaNetDevice:Receive(0x7f95680040e0, 0xf96ad0)
+0 UID is 9
+1 CsmaNetDevice:Receive(0x7f9568001790, 0xf96ad0)
+1 UID is 9
+1 CsmaNetDevice:IsReceiveEnabled()
+1 Received, Pkt source is fe:06:eb:13:bb:dd destination is 33:33:00:00:00:02
+1 CsmaNetDevice:GetAddress()
+0 CsmaNetDevice:TransmitReadyEvent()
+0 CsmaNetDevice:Send(0x7f9568001790, 02-06-33:33:00:00:00:16, 34525)
+0 CsmaNetDevice:SendFrom(0x7f9568001790, 02-06-fe:06:eb:13:bb:dd, 02-06-33:33:00:00:00:16, 34525)
+0 packet =0x7f9568001790
+0 UID is 10)
+0 Sending From : 02-06-fe:06:eb:13:bb:dd To : 02-06-33:33:00:00:00:16
+0 CsmaNetDevice:IsLinkUp()
+0 CsmaNetDevice:IsSendEnabled()
+0 CsmaNetDevice:AddHeader(0x7f9568001790, fe:06:eb:13:bb:dd, 33:33:00:00:00:16, 34525)
+0 p->GetSize () = 76
+0 m_encapMode = 1
+0 m_mtu = 1500
+0 Encapsulating packet as DIX (type interpretation)
+0 header.SetLengthType (34525)
+0 CsmaNetDevice:TransmitStart()
+0 m_currentPkt = 0x7f9568001790
+0 UID = 10
+0 CsmaNetDevice:IsSendEnabled()
+0 Schedule TransmitCompleteEvent in 1.75e-07sec
+0 CsmaNetDevice:TransmitCompleteEvent()
+0 m_currentPkt=0x7f9568001790
+0 Pkt UID is 10)
+0 CsmaNetDevice:GetNode()
+0 CsmaNetDevice:GetNode()
+0 Schedule TransmitReadyEvent in 2.2e-08sec
+0 CsmaNetDevice:Receive(0x7f9568024a60, 0xf96ad0)
+0 UID is 10
+1 CsmaNetDevice:Receive(0x7f95680040e0, 0xf96ad0)
+1 UID is 10
+1 CsmaNetDevice:IsReceiveEnabled()
+1 Received, Pkt source is fe:06:eb:13:bb:dd destination is 33:33:00:00:00:16
+1 CsmaNetDevice:GetAddress()
+0 CsmaNetDevice:TransmitReadyEvent()
+3 Send From : 7.0.0.3 to : 7.1.0.2170x7f9568026590
+3 At time 2s client sent 64 bytes to 7.1.0.2 port 9
+2 CsmaNetDevice:Send(0x7f95680040e0, 02-06-33:33:00:00:00:16, 34525)
+2 CsmaNetDevice:SendFrom(0x7f95680040e0, 02-06-ea:36:d6:88:77:46, 02-06-33:33:00:00:00:16, 34525)
+2 packet =0x7f95680040e0
+2 UID is 12)
+2 Sending From : 02-06-ea:36:d6:88:77:46 To : 02-06-33:33:00:00:00:16
+2 CsmaNetDevice:IsLinkUp()
+2 CsmaNetDevice:IsSendEnabled()
+2 CsmaNetDevice:AddHeader(0x7f95680040e0, ea:36:d6:88:77:46, 33:33:00:00:00:16, 34525)
+2 p->GetSize () = 76
+2 m_encapMode = 1
+2 m_mtu = 1500
+2 Encapsulating packet as DIX (type interpretation)
+2 header.SetLengthType (34525)
+2 CsmaNetDevice:TransmitStart()
+2 m_currentPkt = 0x7f95680040e0
+2 UID = 12
+2 CsmaNetDevice:IsSendEnabled()
+2 Schedule TransmitCompleteEvent in 1.75e-07sec
+2 CsmaNetDevice:TransmitCompleteEvent()
+2 m_currentPkt=0x7f95680040e0
+2 Pkt UID is 12)
+2 CsmaNetDevice:GetNode()
+2 CsmaNetDevice:GetNode()
+2 Schedule TransmitReadyEvent in 2.2e-08sec
+2 CsmaNetDevice:Receive(0x7f95680257a0, 0xfad6a0)
+2 UID is 12
+3 CsmaNetDevice:Receive(0x7f9568024a60, 0xfad6a0)
+3 UID is 12
+3 CsmaNetDevice:IsReceiveEnabled()
+3 Received, Pkt source is ea:36:d6:88:77:46 destination is 33:33:00:00:00:16
+3 CsmaNetDevice:GetAddress()
+2 CsmaNetDevice:TransmitReadyEvent()
+2 CsmaNetDevice:Send(0x7f9568024a60, 02-06-33:33:00:00:00:02, 34525)
+2 CsmaNetDevice:SendFrom(0x7f9568024a60, 02-06-ea:36:d6:88:77:46, 02-06-33:33:00:00:00:02, 34525)
+2 packet =0x7f9568024a60
+2 UID is 13)
+2 Sending From : 02-06-ea:36:d6:88:77:46 To : 02-06-33:33:00:00:00:02
+2 CsmaNetDevice:IsLinkUp()
+2 CsmaNetDevice:IsSendEnabled()
+2 CsmaNetDevice:AddHeader(0x7f9568024a60, ea:36:d6:88:77:46, 33:33:00:00:00:02, 34525)
+2 p->GetSize () = 56
+2 m_encapMode = 1
+2 m_mtu = 1500
+2 Encapsulating packet as DIX (type interpretation)
+2 header.SetLengthType (34525)
+2 CsmaNetDevice:TransmitStart()
+2 m_currentPkt = 0x7f9568024a60
+2 UID = 13
+2 CsmaNetDevice:IsSendEnabled()
+2 Schedule TransmitCompleteEvent in 1.37e-07sec
+2 CsmaNetDevice:TransmitCompleteEvent()
+2 m_currentPkt=0x7f9568024a60
+2 Pkt UID is 13)
+2 CsmaNetDevice:GetNode()
+2 CsmaNetDevice:GetNode()
+2 Schedule TransmitReadyEvent in 2.2e-08sec
+2 CsmaNetDevice:Receive(0x7f95680040e0, 0xfad6a0)
+2 UID is 13
+3 CsmaNetDevice:Receive(0x7f95680257a0, 0xfad6a0)
+3 UID is 13
+3 CsmaNetDevice:IsReceiveEnabled()
+3 Received, Pkt source is ea:36:d6:88:77:46 destination is 33:33:00:00:00:02
+3 CsmaNetDevice:GetAddress()
+2 CsmaNetDevice:TransmitReadyEvent()
+5 Send From : 10.0.0.5 to : 10.0.0.6170
+4 Packet from 02-06-00:00:00:00:00:06 received on node 4
+4 Icmpv4L4Protocol:GetProtocolNumber(0xf96550)
+4 Received Packet 
+4 Packet from 02-06-00:00:00:00:00:05 received on node 4
+4 previous packet addressed to 7.1.0.2 UE gateway 7.0.0.2
+4 Send From : 10.0.0.6 to : 10.0.0.5170x7f9568025c30
+5 Packet from 02-06-00:00:00:00:00:07 received on node 5
+5 Icmpv4L4Protocol:GetProtocolNumber(0xfc9a70)
+1 Packet from 00-00-00 received on node 1
+1 Icmpv4L4Protocol:GetProtocolNumber(0xf99b60)
+1 At time 2.016s server received 64 bytes from 7.0.0.3 port 49153
+1 Send From : 7.0.0.2 to : 7.0.0.3170x7f95680014d0
+1 At time 2.016s server sent 64 bytes to 7.0.0.3 port 49153
+5 Send From : 10.0.0.5 to : 10.0.0.6170
+4 Packet from 02-06-00:00:00:00:00:06 received on node 4
+4 Icmpv4L4Protocol:GetProtocolNumber(0xf96550)
+4 Received Packet 
+4 Packet from 02-06-00:00:00:00:00:05 received on node 4
+4 previous packet addressed to 7.0.0.3 UE gateway 7.0.0.3
+4 Send From : 10.0.0.6 to : 10.0.0.5170x7f9568024d90
+5 Packet from 02-06-00:00:00:00:00:07 received on node 5
+5 Icmpv4L4Protocol:GetProtocolNumber(0xfc9a70)
+3 Packet from 00-00-00 received on node 3
+3 Icmpv4L4Protocol:GetProtocolNumber(0xfb0640)
+3 At time 2.031s client received 64 bytes from 7.0.0.2 port 9
+2 CsmaNetDevice:Send(0x7f9568029280, 02-06-33:33:00:00:00:16, 34525)
+2 CsmaNetDevice:SendFrom(0x7f9568029280, 02-06-ea:36:d6:88:77:46, 02-06-33:33:00:00:00:16, 34525)
+2 packet =0x7f9568029280
+2 UID is 18)
+2 Sending From : 02-06-ea:36:d6:88:77:46 To : 02-06-33:33:00:00:00:16
+2 CsmaNetDevice:IsLinkUp()
+2 CsmaNetDevice:IsSendEnabled()
+2 CsmaNetDevice:AddHeader(0x7f9568029280, ea:36:d6:88:77:46, 33:33:00:00:00:16, 34525)
+2 p->GetSize () = 76
+2 m_encapMode = 1
+2 m_mtu = 1500
+2 Encapsulating packet as DIX (type interpretation)
+2 header.SetLengthType (34525)
+2 CsmaNetDevice:TransmitStart()
+2 m_currentPkt = 0x7f9568029280
+2 UID = 18
+2 CsmaNetDevice:IsSendEnabled()
+2 Schedule TransmitCompleteEvent in 1.75e-07sec
+2 CsmaNetDevice:TransmitCompleteEvent()
+2 m_currentPkt=0x7f9568029280
+2 Pkt UID is 18)
+2 CsmaNetDevice:GetNode()
+2 CsmaNetDevice:GetNode()
+2 Schedule TransmitReadyEvent in 2.2e-08sec
+2 CsmaNetDevice:Receive(0x7f9568024a60, 0xfad6a0)
+2 UID is 18
+3 CsmaNetDevice:Receive(0x7f9568025d40, 0xfad6a0)
+3 UID is 18
+3 CsmaNetDevice:IsReceiveEnabled()
+3 Received, Pkt source is ea:36:d6:88:77:46 destination is 33:33:00:00:00:16
+3 CsmaNetDevice:GetAddress()
+2 CsmaNetDevice:TransmitReadyEvent()
+0 CsmaNetDevice:Send(0x7f9568025d40, 02-06-33:33:00:00:00:02, 34525)
+0 CsmaNetDevice:SendFrom(0x7f9568025d40, 02-06-fe:06:eb:13:bb:dd, 02-06-33:33:00:00:00:02, 34525)
+0 packet =0x7f9568025d40
+0 UID is 19)
+0 Sending From : 02-06-fe:06:eb:13:bb:dd To : 02-06-33:33:00:00:00:02
+0 CsmaNetDevice:IsLinkUp()
+0 CsmaNetDevice:IsSendEnabled()
+0 CsmaNetDevice:AddHeader(0x7f9568025d40, fe:06:eb:13:bb:dd, 33:33:00:00:00:02, 34525)
+0 p->GetSize () = 56
+0 m_encapMode = 1
+0 m_mtu = 1500
+0 Encapsulating packet as DIX (type interpretation)
+0 header.SetLengthType (34525)
+0 CsmaNetDevice:TransmitStart()
+0 m_currentPkt = 0x7f9568025d40
+0 UID = 19
+0 CsmaNetDevice:IsSendEnabled()
+0 Schedule TransmitCompleteEvent in 1.37e-07sec
+0 CsmaNetDevice:TransmitCompleteEvent()
+0 m_currentPkt=0x7f9568025d40
+0 Pkt UID is 19)
+0 CsmaNetDevice:GetNode()
+0 CsmaNetDevice:GetNode()
+0 Schedule TransmitReadyEvent in 2.2e-08sec
+0 CsmaNetDevice:Receive(0x7f9568001790, 0xf96ad0)
+0 UID is 19
+1 CsmaNetDevice:Receive(0x7f9568024a60, 0xf96ad0)
+1 UID is 19
+1 CsmaNetDevice:IsReceiveEnabled()
+1 Received, Pkt source is fe:06:eb:13:bb:dd destination is 33:33:00:00:00:02
+1 CsmaNetDevice:GetAddress()
+0 CsmaNetDevice:TransmitReadyEvent()
+2 CsmaNetDevice:Send(0x7f9568024a60, 02-06-33:33:00:00:00:02, 34525)
+2 CsmaNetDevice:SendFrom(0x7f9568024a60, 02-06-ea:36:d6:88:77:46, 02-06-33:33:00:00:00:02, 34525)
+2 packet =0x7f9568024a60
+2 UID is 20)
+2 Sending From : 02-06-ea:36:d6:88:77:46 To : 02-06-33:33:00:00:00:02
+2 CsmaNetDevice:IsLinkUp()
+2 CsmaNetDevice:IsSendEnabled()
+2 CsmaNetDevice:AddHeader(0x7f9568024a60, ea:36:d6:88:77:46, 33:33:00:00:00:02, 34525)
+2 p->GetSize () = 56
+2 m_encapMode = 1
+2 m_mtu = 1500
+2 Encapsulating packet as DIX (type interpretation)
+2 header.SetLengthType (34525)
+2 CsmaNetDevice:TransmitStart()
+2 m_currentPkt = 0x7f9568024a60
+2 UID = 20
+2 CsmaNetDevice:IsSendEnabled()
+2 Schedule TransmitCompleteEvent in 1.37e-07sec
+2 CsmaNetDevice:TransmitCompleteEvent()
+2 m_currentPkt=0x7f9568024a60
+2 Pkt UID is 20)
+2 CsmaNetDevice:GetNode()
+2 CsmaNetDevice:GetNode()
+2 Schedule TransmitReadyEvent in 2.2e-08sec
+2 CsmaNetDevice:Receive(0x7f9568029280, 0xfad6a0)
+2 UID is 20
+3 CsmaNetDevice:Receive(0x7f9568001790, 0xfad6a0)
+3 UID is 20
+3 CsmaNetDevice:IsReceiveEnabled()
+3 Received, Pkt source is ea:36:d6:88:77:46 destination is 33:33:00:00:00:02
+3 CsmaNetDevice:GetAddress()
+2 CsmaNetDevice:TransmitReadyEvent()
+0 CsmaNetDevice:Send(0x7f9568001790, 02-06-33:33:00:00:00:02, 34525)
+0 CsmaNetDevice:SendFrom(0x7f9568001790, 02-06-fe:06:eb:13:bb:dd, 02-06-33:33:00:00:00:02, 34525)
+0 packet =0x7f9568001790
+0 UID is 21)
+0 Sending From : 02-06-fe:06:eb:13:bb:dd To : 02-06-33:33:00:00:00:02
+0 CsmaNetDevice:IsLinkUp()
+0 CsmaNetDevice:IsSendEnabled()
+0 CsmaNetDevice:AddHeader(0x7f9568001790, fe:06:eb:13:bb:dd, 33:33:00:00:00:02, 34525)
+0 p->GetSize () = 56
+0 m_encapMode = 1
+0 m_mtu = 1500
+0 Encapsulating packet as DIX (type interpretation)
+0 header.SetLengthType (34525)
+0 CsmaNetDevice:TransmitStart()
+0 m_currentPkt = 0x7f9568001790
+0 UID = 21
+0 CsmaNetDevice:IsSendEnabled()
+0 Schedule TransmitCompleteEvent in 1.37e-07sec
+0 CsmaNetDevice:TransmitCompleteEvent()
+0 m_currentPkt=0x7f9568001790
+0 Pkt UID is 21)
+0 CsmaNetDevice:GetNode()
+0 CsmaNetDevice:GetNode()
+0 Schedule TransmitReadyEvent in 2.2e-08sec
+0 CsmaNetDevice:Receive(0x7f9568025d40, 0xf96ad0)
+0 UID is 21
+1 CsmaNetDevice:Receive(0x7f9568029280, 0xf96ad0)
+1 UID is 21
+1 CsmaNetDevice:IsReceiveEnabled()
+1 Received, Pkt source is fe:06:eb:13:bb:dd destination is 33:33:00:00:00:02
+1 CsmaNetDevice:GetAddress()
+0 CsmaNetDevice:TransmitReadyEvent()
+2 CsmaNetDevice:Send(0x7f9568029280, 02-06-33:33:00:00:00:02, 34525)
+2 CsmaNetDevice:SendFrom(0x7f9568029280, 02-06-ea:36:d6:88:77:46, 02-06-33:33:00:00:00:02, 34525)
+2 packet =0x7f9568029280
+2 UID is 22)
+2 Sending From : 02-06-ea:36:d6:88:77:46 To : 02-06-33:33:00:00:00:02
+2 CsmaNetDevice:IsLinkUp()
+2 CsmaNetDevice:IsSendEnabled()
+2 CsmaNetDevice:AddHeader(0x7f9568029280, ea:36:d6:88:77:46, 33:33:00:00:00:02, 34525)
+2 p->GetSize () = 56
+2 m_encapMode = 1
+2 m_mtu = 1500
+2 Encapsulating packet as DIX (type interpretation)
+2 header.SetLengthType (34525)
+2 CsmaNetDevice:TransmitStart()
+2 m_currentPkt = 0x7f9568029280
+2 UID = 22
+2 CsmaNetDevice:IsSendEnabled()
+2 Schedule TransmitCompleteEvent in 1.37e-07sec
+2 CsmaNetDevice:TransmitCompleteEvent()
+2 m_currentPkt=0x7f9568029280
+2 Pkt UID is 22)
+2 CsmaNetDevice:GetNode()
+2 CsmaNetDevice:GetNode()
+2 Schedule TransmitReadyEvent in 2.2e-08sec
+2 CsmaNetDevice:Receive(0x7f9568024a60, 0xfad6a0)
+2 UID is 22
+3 CsmaNetDevice:Receive(0x7f9568025d40, 0xfad6a0)
+3 UID is 22
+3 CsmaNetDevice:IsReceiveEnabled()
+3 Received, Pkt source is ea:36:d6:88:77:46 destination is 33:33:00:00:00:02
+3 CsmaNetDevice:GetAddress()
+2 CsmaNetDevice:TransmitReadyEvent()
+
+Interrupt
+
+Interrupt

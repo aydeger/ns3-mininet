@@ -1,0 +1,140 @@
+Waf: Entering directory `/home/nico/Program/Mininet/ns3/ns-allinone-3.22/ns-3.22/build'
+Waf: Leaving directory `/home/nico/Program/Mininet/ns3/ns-allinone-3.22/ns-3.22/build'
+'build' finished successfully (1.000s)
+0s -1 ArpL3Protocol:ArpL3Protocol(0xb2ecc0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 ArpL3Protocol:SetNode(0xb2ecc0, 0xb2d1b0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 TcpL4Protocol:TcpL4Protocol()
+0s -1 TcpL4Protocol:TcpL4Protocol(): [LOGIC] Made a TcpL4Protocol 0xb31080
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb2ecc0)
+0s -1 ArpL3Protocol:ArpL3Protocol(0xb30a60)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 ArpL3Protocol:SetNode(0xb30a60, 0xb2d6a0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 TcpL4Protocol:TcpL4Protocol()
+0s -1 TcpL4Protocol:TcpL4Protocol(): [LOGIC] Made a TcpL4Protocol 0xb32cc0
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb30a60)
+0s -1 ArpL3Protocol:CreateCache(0xb2ecc0, 0xb2e000, 0xb32de0)
+0s -1 ArpL3Protocol:CreateCache(0xb30a60, 0xb2e470, 0xb33ec0)
+0s -1 ArpL3Protocol:ArpL3Protocol(0xb354c0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 ArpL3Protocol:SetNode(0xb354c0, 0xb2d7e0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 TcpL4Protocol:TcpL4Protocol()
+0s -1 TcpL4Protocol:TcpL4Protocol(): [LOGIC] Made a TcpL4Protocol 0xb36c50
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb354c0)
+0s -1 ArpL3Protocol:ArpL3Protocol(0xb36630)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 ArpL3Protocol:SetNode(0xb36630, 0xb2d910)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 TcpL4Protocol:TcpL4Protocol()
+0s -1 TcpL4Protocol:TcpL4Protocol(): [LOGIC] Made a TcpL4Protocol 0xb38890
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 ArpL3Protocol:NotifyNewAggregate(0xb36630)
+0s -1 ArpL3Protocol:CreateCache(0xb354c0, 0xb34930, 0xb389b0)
+0s -1 ArpL3Protocol:CreateCache(0xb36630, 0xb34db0, 0xb397b0)
+0s -1 HwmpProtocol:HwmpProtocol()
+0s -1 HwmpProtocol:HwmpProtocol()
+0s -1 ArpL3Protocol:CreateCache(0xb30a60, 0xb3a790, 0xb2daf0)
+0s -1 ArpL3Protocol:CreateCache(0xb36630, 0xb3ecf0, 0xb431e0)
+CSMA-MESH Left IP address 1 : 7.1.0.2 1Node ID : 1
+CSMA-MESH Left IP address 2 : 10.1.1.1 2Node ID : 1
+CSMA-MESH right IP address 1 : 7.2.0.2 1Node ID : 3
+CSMA-MESH right IP address 2 : 10.1.1.2 2Node ID : 3
+CSMA-Tap Left IP address 1 : 7.1.0.1 1Node ID : 0
+CSMA-Tap Right IP address 1 : 7.2.0.1 1Node ID : 2
+1s 0 LtePacketSource:StartApplication(): [INFO ] run connection 0
+1s 0 LtePacketSource:StartApplication(): [INFO ] Connection Establishment First
+3s 0 LtePacketSource:SendPacket(): [INFO ] Size of seqTs: 22
+3s 0 ArpL3Protocol:Lookup(0xb2ecc0, 0xb45f80, 10.1.1.2, 0xb2e000, 0xb33480, 0x7ffdf89bcfd0)
+3s 0 ArpL3Protocol:Lookup(): [LOGIC] node=0, no entry for 10.1.1.2 -- send arp request
+3s 0 LtePacketSource:SendPacket(): [INFO ]  Tx 1024 10.1.1.2 Uid 22 Sequence Number: 0 Consumer Id : 0 Operation ID : 0 Time 3
+3.007s 0 ArpL3Protocol:SendArpRequest(0xb2ecc0, 0xb33480, 10.1.1.2)
+3.007s 0 ArpL3Protocol:SendArpRequest(): [LOGIC] ARP: sending request from node 0 || src: 02-06-00:00:00:00:00:01 / 7.1.0.1 || dst: 02-06-ff:ff:ff:ff:ff:ff / 10.1.1.2
+3.0091s 1 ArpL3Protocol:Receive(0xb30a60, 0xb2e470, 46, 2054, 02-06-00:00:00:00:00:01, 02-06-00:00:00:00:00:02, 0)
+3.0091s 1 ArpL3Protocol:Receive(): [LOGIC] ARP: received packet of size 46
+3.0091s 1 ArpL3Protocol:FindCache(0xb30a60, 0xb2e470)
+3.0091s 1 ArpL3Protocol:Receive(): [LOGIC] ARP: received request node=1, got request from 7.1.0.1 for address 10.1.1.2; we have addresses: 
+3.0091s 1 ArpL3Protocol:Receive(): [LOGIC] 7.1.0.2, 
+3.0091s 1 ArpL3Protocol:Receive(): [LOGIC] node=1, got request from 7.1.0.1 for unknown address 10.1.1.2 -- drop
+4s 0 ArpL3Protocol:SendArpRequest(0xb2ecc0, 0xb33480, 10.1.1.2)
+4s 0 ArpL3Protocol:SendArpRequest(): [LOGIC] ARP: sending request from node 0 || src: 02-06-00:00:00:00:00:01 / 7.1.0.1 || dst: 02-06-ff:ff:ff:ff:ff:ff / 10.1.1.2
+4.0021s 1 ArpL3Protocol:Receive(0xb30a60, 0xb2e470, 46, 2054, 02-06-00:00:00:00:00:01, 02-06-00:00:00:00:00:02, 0)
+4.0021s 1 ArpL3Protocol:Receive(): [LOGIC] ARP: received packet of size 46
+4.0021s 1 ArpL3Protocol:FindCache(0xb30a60, 0xb2e470)
+4.0021s 1 ArpL3Protocol:Receive(): [LOGIC] ARP: received request node=1, got request from 7.1.0.1 for address 10.1.1.2; we have addresses: 
+4.0021s 1 ArpL3Protocol:Receive(): [LOGIC] 7.1.0.2, 
+4.0021s 1 ArpL3Protocol:Receive(): [LOGIC] node=1, got request from 7.1.0.1 for unknown address 10.1.1.2 -- drop
+5s 0 ArpL3Protocol:SendArpRequest(0xb2ecc0, 0xb33480, 10.1.1.2)
+5s 0 ArpL3Protocol:SendArpRequest(): [LOGIC] ARP: sending request from node 0 || src: 02-06-00:00:00:00:00:01 / 7.1.0.1 || dst: 02-06-ff:ff:ff:ff:ff:ff / 10.1.1.2
+5.0021s 1 ArpL3Protocol:Receive(0xb30a60, 0xb2e470, 46, 2054, 02-06-00:00:00:00:00:01, 02-06-00:00:00:00:00:02, 0)
+5.0021s 1 ArpL3Protocol:Receive(): [LOGIC] ARP: received packet of size 46
+5.0021s 1 ArpL3Protocol:FindCache(0xb30a60, 0xb2e470)
+5.0021s 1 ArpL3Protocol:Receive(): [LOGIC] ARP: received request node=1, got request from 7.1.0.1 for address 10.1.1.2; we have addresses: 
+5.0021s 1 ArpL3Protocol:Receive(): [LOGIC] 7.1.0.2, 
+5.0021s 1 ArpL3Protocol:Receive(): [LOGIC] node=1, got request from 7.1.0.1 for unknown address 10.1.1.2 -- drop
+6s 0 ArpL3Protocol:SendArpRequest(0xb2ecc0, 0xb33480, 10.1.1.2)
+6s 0 ArpL3Protocol:SendArpRequest(): [LOGIC] ARP: sending request from node 0 || src: 02-06-00:00:00:00:00:01 / 7.1.0.1 || dst: 02-06-ff:ff:ff:ff:ff:ff / 10.1.1.2
+6.0021s 1 ArpL3Protocol:Receive(0xb30a60, 0xb2e470, 46, 2054, 02-06-00:00:00:00:00:01, 02-06-00:00:00:00:00:02, 0)
+6.0021s 1 ArpL3Protocol:Receive(): [LOGIC] ARP: received packet of size 46
+6.0021s 1 ArpL3Protocol:FindCache(0xb30a60, 0xb2e470)
+6.0021s 1 ArpL3Protocol:Receive(): [LOGIC] ARP: received request node=1, got request from 7.1.0.1 for address 10.1.1.2; we have addresses: 
+6.0021s 1 ArpL3Protocol:Receive(): [LOGIC] 7.1.0.2, 
+6.0021s 1 ArpL3Protocol:Receive(): [LOGIC] node=1, got request from 7.1.0.1 for unknown address 10.1.1.2 -- drop
+8s 0 LtePacketSource:SendPacket(): [INFO ] Size of seqTs: 22
+8s 0 ArpL3Protocol:Lookup(0xb2ecc0, 0xb461c0, 10.1.1.2, 0xb2e000, 0xb33480, 0x7ffdf89bcfd0)
+8s 0 ArpL3Protocol:Lookup(): [LOGIC] node=0, dead entry for 10.1.1.2 valid -- drop
+8s 0 LtePacketSource:SendPacket(): [INFO ]  Tx 1024 10.1.1.2 Uid 51 Sequence Number: 1 Consumer Id : 0 Operation ID : 0 Time 8
+Interrupted 

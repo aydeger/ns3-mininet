@@ -1,0 +1,721 @@
+/* -*- Mode:C++; c-file-style:"gnu"; indent-tabs-mode:nil; -*- */
+/*
+ * Copyright (c) 2008,2009 IITP RAS
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation;
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
+ * Author: Nico Saputro <nsaputro@fiu.edu>
+  *   <---- CSMA One -------------------->
+  *
+  *   Tap-Bridge1 ----- CSMA1 ------- <CSMA|UE> ----- ENB ------ EPC  
+  *                                                    |
+  *                                                    |
+  *   Tap-Bridge2 ----- CSMA2 ------- <CSMA|UE> --------
+  *
+ *  <------ CSMA Two ------------------>
+ */
+
+
+#include "ns3/core-module.h"
+#include "ns3/internet-module.h"
+#include "ns3/network-module.h"
+#include "ns3/applications-module.h"
+#include "ns3/mobility-module.h"
+#include <ns3/lte-module.h>
+#include <ns3/point-to-point-helper.h>
+#include "ns3/csma-module.h"
+
+
+
+#include "ns3/ipv4-flow-classifier.h"
+#include "ns3/hwmp-protocol.h"
+#include "ns3/arp-l3-protocol.h"
+#include "ns3/tcp-l4-protocol.h"
+#include "ns3/hwmp-tcp-interface.h"
+#include "ns3/tcp-socket-base.h"
+
+
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <algorithm>
+
+#include "n_eq_coord.h"
+#include "n_eq_25.h"
+#include "n_eq_36.h"
+#include "n_eq_49.h"
+#include "n_eq_64.h"
+#include "n_eq_81.h"
+#include "n_eq_100.h"
+#include "n_eq_121.h"
+#include "n_eq_144.h"
+using namespace ns3;
+
+NS_LOG_COMPONENT_DEFINE ("TestLteScript");
+class LteTest
+{
+public:
+  /// Init test
+  LteTest ();
+  /// Configure test from command line arguments
+  void Configure (int argc, char ** argv);
+  /// Run test
+  int Run ();
+  //
+private:
+  int       m_xSize;
+  int       m_ySize;
+  double    m_step;
+  double    m_randomStart;
+  double    m_totalTime;
+  double    m_packetInterval;
+  uint16_t  m_packetSize;
+  uint16_t  m_packetSize1;
+  uint32_t  m_nIfaces;
+  bool      m_chan;
+  bool      m_pcap;
+  std::string m_stack;
+  std::string m_root;
+  std::string m_txrate;
+  int         m_node_num;
+  int         m_ac;
+  int         m_ac1;
+  int         m_ac2;
+  int         m_conn;
+  int         m_shuffle;
+  double      m_initstart;
+  int         m_sink;
+  std::string m_sinkIpAddress;
+  bool        m_ActivateSecurityModule;
+  std::string m_filename;
+  bool        m_gridtopology;
+  std::string m_UdpTcpMode;
+  int         m_arpOp;
+  double      m_arpwait;
+  bool        m_randomAppStart;
+  int         m_maxDepth;
+  int         m_strategy;
+  double      m_delta;
+  bool        m_peartoActivated;
+  uint32_t    m_consumerId;
+  int         m_connectionType;
+  int         m_portId;
+  std::string m_headerFilename;
+
+  //
+  vector< coordinates > nodeCoords; 
+
+  //to calculate the lenght of the simulation
+  float m_timeTotal, m_timeStart, m_timeEnd;
+ 
+   //
+private:
+  /// Create nodes and setup their mobility
+  NetDeviceContainer CreateNodes (NodeContainer nodes);
+  /// Install internet m_stack on nodes
+  Ipv4InterfaceContainer InstallInternetStack (NodeContainer nodes, NetDeviceContainer netDevice, Ipv4Address ipv4addr);
+  /// Install applications
+  //void InstallApplication ();
+  void InstallApplication (NodeContainer nodes, Ipv4Address remoteHostAddr,Ptr<Node> remoteHost, int m_tcpPort, uint16_t m_pktSize, double m_pktInterval, double m_1stSending, uint32_t opId, int m_up, uint8_t m_privacy);
+  /// Print mesh devices diagnostics
+  void Report ();
+   
+  void CreateCustId();
+
+};
+LteTest::LteTest () :
+  m_xSize (3),
+  m_ySize (1),
+  m_step (100.0),
+  m_randomStart (0.1),
+  m_totalTime (20.0),
+  //m_packetInterval (0.5),
+  m_packetSize (80),
+  m_packetSize1 (12660),
+  m_nIfaces (1),
+  m_chan (true),
+  m_pcap (false),
+  m_stack ("ns3::Dot11sStack"),
+  m_root ("00:00:00:00:00:01"),
+//  m_root ("ff:ff:ff:ff:ff:ff"),
+  m_txrate ("150kbps"),
+  m_node_num (0),
+  m_ac (0),
+  m_ac1 (0),
+  m_ac2 (0),
+  m_conn (0),
+  m_shuffle (2),
+  m_initstart (10.4),   //5.4 old
+  m_sink (2),
+  m_sinkIpAddress ("10.1.1.1"),
+  m_ActivateSecurityModule (false),
+  m_gridtopology (true),
+  m_UdpTcpMode ("udp"),
+  m_arpOp (1),
+  m_arpwait (4), // default 1 s, 4s better since no failed node
+  m_randomAppStart (false),
+  m_maxDepth (0),
+  m_strategy (3),
+  m_delta (0.03),
+  m_peartoActivated (false),
+  m_consumerId (15),
+  m_connectionType (0),
+  m_portId (8100),
+  m_headerFilename ("output/")
+{
+}
+void
+LteTest::Configure (int argc, char *argv[])
+{
+  CommandLine cmd;
+  cmd.AddValue ("x-size", "Number of nodes in a row grid. [6]", m_xSize);
+  cmd.AddValue ("y-size", "Number of rows in a grid. [6]", m_ySize);
+  cmd.AddValue ("step",   "Size of edge in our grid, meters. [100 m]", m_step);
+  /*
+   * As soon as starting node means that it sends a beacon,
+   * simultaneous start is not good.
+   */
+  cmd.AddValue ("start",  "Maximum random start delay, seconds. [0.1 s]", m_randomStart);
+  cmd.AddValue ("time",  "Simulation time, seconds [100 s]", m_totalTime);
+  cmd.AddValue ("packet-interval",  "Interval between packets in UDP ping, seconds [0.001 s]", m_packetInterval);
+  cmd.AddValue ("packet-size",  "Size of the first packets", m_packetSize);
+  cmd.AddValue ("packet-size1", "Size of the second packets", m_packetSize1);
+  cmd.AddValue ("interfaces", "Number of radio interfaces used by each mesh point. [1]", m_nIfaces);
+  cmd.AddValue ("channels",   "Use different frequency channels for different interfaces. [0]", m_chan);
+  cmd.AddValue ("pcap",   "Enable PCAP traces on interfaces. [0]", m_pcap);
+  cmd.AddValue ("stack",  "Type of protocol stack. ns3::Dot11sStack by default", m_stack);
+  cmd.AddValue ("root", "Mac address of root mesh point in HWMP", m_root);
+  cmd.AddValue ("node", "Node sink", m_node_num);
+  cmd.AddValue ("ac", "Access Class UP_BE=0, UP_BK=1, UP_VI=5, UP_VO=6", m_ac);
+  cmd.AddValue ("ac1", "Access Class UP_BE=0, UP_BK=1, UP_VI=5, UP_VO=6", m_ac1);
+  cmd.AddValue ("conn", "Number of sending nodes [1]", m_conn); 
+  cmd.AddValue ("shuffle", "Number of random shuffle [2]", m_shuffle);
+  cmd.AddValue ("init", "Initial Starting time [5.4]", m_initstart);
+  cmd.AddValue ("sink", "Sink node ID [0]", m_sink);
+  cmd.AddValue ("sink-ip", "IP address of the default entry in ARP table", m_sinkIpAddress);
+  cmd.AddValue ("security","Activate Security Module [false]", m_ActivateSecurityModule);
+  cmd.AddValue ("grid", "Choice whether grid or random topology [true]", m_gridtopology);
+  cmd.AddValue ("UdpTcp", "UDP or TCP mode [udp]", m_UdpTcpMode);
+  cmd.AddValue ("arp-op", "ARP operations : 1. Normal [default], 2. Creation only, 3. Maintenance ony, 4. All pre-install arp table", m_arpOp);
+  cmd.AddValue ("wait-arp", "When this timeout expires, the cache entries will be scanned and entries in WaitReply state will resend ArpRequest unless MaxRetries has been exceeded, in which case the entry is marked dead [1s]", m_arpwait);
+  cmd.AddValue ("random-start", "Random start of the application [false]", m_randomAppStart);
+  cmd.AddValue ("strategy", "Type of scheduling strategies. 1. Nearest nodes first, 2. Farthest node first, 3. Random [3]", m_strategy);
+  cmd.AddValue ("delta", "The additional time for scheduling strategy [0.03]", m_delta);
+  cmd.AddValue ("pearto", "PEA RTO Activated ? [false]", m_peartoActivated);
+  cmd.AddValue ("connection-type", "Type of connection for connection establishment [0] = created first, 1 = created when data is sent", m_connectionType);
+  cmd.AddValue ("port-num", "The port number of the remote host, it can determine the QoS support, 8100 = tcp_default, 9100 = gbr_gamming", m_portId);
+  cmd.AddValue ("filename", "The name of the output file", m_headerFilename);
+
+
+
+  cmd.Parse (argc, argv);
+  NS_LOG_DEBUG ("Grid:" << m_xSize << "*" << m_ySize);
+  NS_LOG_DEBUG ("Simulation time: " << m_totalTime << " s");
+}
+NetDeviceContainer
+LteTest::CreateNodes (NodeContainer nodes)
+{ 
+  /*
+   * Create m_ySize*m_xSize stations to form a grid topology
+   */
+  CsmaHelper csma;
+  csma.SetChannelAttribute ("DataRate", DataRateValue (DataRate ("100Gb/s")));
+  csma.SetChannelAttribute ("Delay", TimeValue (Seconds (0.010)));
+  
+  NetDeviceContainer netDevices = csma.Install (nodes);
+   
+  // Setup mobility - static grid topology
+  MobilityHelper mobility;
+ 
+     mobility.SetPositionAllocator ("ns3::GridPositionAllocator",
+                                    "MinX", DoubleValue (0.0),
+                                    "MinY", DoubleValue (0.0),
+                                    "DeltaX", DoubleValue (m_step),
+                                    "DeltaY", DoubleValue (m_step),
+                                    "GridWidth", UintegerValue (m_xSize),
+                                    "LayoutType", StringValue ("RowFirst"));
+									
+		for (int i = 0; i < m_xSize*m_ySize; i++)
+       {
+            //case ROW_FIRST:
+            coordinates position;
+            position.X = m_step * (i % m_xSize);
+            position.Y = m_step * (i / m_xSize);
+            nodeCoords.push_back ( position );
+       } 							
+ 
+     Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator>();
+     for (vector< coordinates >::iterator j = nodeCoords.begin (); 
+                                  j != nodeCoords.end (); j++) 
+       {
+         positionAlloc->Add (Vector ((*j).X, (*j).Y, 0.0));
+       }
+     mobility.SetPositionAllocator (positionAlloc);
+    
+  mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+  mobility.Install (nodes);
+  
+  return netDevices;
+}
+Ipv4InterfaceContainer
+LteTest::InstallInternetStack (NodeContainer nodes, NetDeviceContainer netDevices, Ipv4Address ipv4addr)
+{
+ 	InternetStackHelper internetStack;
+	internetStack.Install (nodes);
+	Ipv4AddressHelper address;
+	address.SetBase (ipv4addr, "255.255.255.0");
+	Ipv4InterfaceContainer ifaces;
+        ifaces = address.Assign (netDevices);
+  
+        return ifaces;
+}
+
+
+void
+LteTest::InstallApplication (NodeContainer nodes, Ipv4Address remoteHostAddr,Ptr<Node> remoteHost, int m_tcpPort, uint16_t m_pktSize, double m_pktInterval, double m_1stSending, uint32_t opId, int m_up, uint8_t m_privacy)
+{       
+
+   int i =0;
+   int *array = new int[m_ySize*m_xSize];
+   for (int i = 0; i < m_ySize*m_xSize-1; i++) {
+       array[i] = i;
+   }
+   // shuffle twice, to make it more random
+   i=0;
+   for (int i = 0; i < m_shuffle; i++) {
+     std::random_shuffle(array,array+(m_ySize*m_xSize-1));
+   }
+   int m_dest_port, m_source;
+   //m_dest=m_sink;
+   m_dest_port = m_tcpPort;
+   i = 0;
+   char num [3];
+   char onoff [8];
+   double duration;
+   ApplicationContainer apps [m_ySize*m_xSize-1];
+   //UniformRandomVariable rand_nodes (1,m_ySize*m_xSize-1);
+
+   Ptr<UniformRandomVariable> rand_start = CreateObject<UniformRandomVariable> ();
+   rand_start->SetAttribute ("Min", DoubleValue (0.001));
+   rand_start->SetAttribute ("Max", DoubleValue (0.009));
+   
+   Ptr<UniformRandomVariable> rand_port = CreateObject<UniformRandomVariable> ();
+   rand_port->SetAttribute ("Min", DoubleValue (9000));
+   rand_port->SetAttribute ("Max", DoubleValue (9100));
+
+   std::stringstream ss;
+   ss << opId;
+   std::string opIdStr;
+   ss >> opIdStr;
+
+   std::ostringstream os;
+     os << m_filename << "-" << opIdStr <<"-time.txt";
+
+   
+   std::ofstream of (os.str().c_str(), std::ios::out | std::ios::app);
+   std::string m_protocol;
+   if (m_UdpTcpMode=="udp") m_protocol = "ns3::UdpSocketFactory";
+   else m_protocol = "ns3::TcpSocketFactory";
+
+
+   for (i = 0; i < m_ySize*m_xSize-1; i++){ 
+        m_source = array[i];
+        
+	strcpy(onoff,"onoff");
+	sprintf(num,"%d",i);
+     	strcat(onoff,num);
+ 
+
+        LtePacketSourceHelper onoff (m_protocol, Address (InetSocketAddress(remoteHostAddr, m_dest_port)));
+        onoff.SetAttribute ("PacketSize", UintegerValue (m_pktSize));
+        onoff.SetAttribute ("ConnectionType", IntegerValue (m_connectionType)); // 0 = create connection first, 1 = connection is created when the first data sent
+        onoff.SetAttribute ("FirstSendingTime", TimeValue (Seconds(m_1stSending)));
+        onoff.SetAttribute ("Interval", TimeValue (Seconds(m_pktInterval)));
+        onoff.SetAttribute ("Pseudonym", UintegerValue (m_consumerId) );
+        CreateCustId();
+        onoff.SetAttribute ("OperationIdentifier", UintegerValue (opId));
+        onoff.SetAttribute ("AccessClass",UintegerValue (UintegerValue(m_up)));
+         apps[i] = onoff.Install (nodes.Get(m_source));
+     
+
+          if (m_randomAppStart){
+             duration = rand_start->GetValue()+m_initstart;
+           } else {
+             duration = m_initstart;
+           }
+
+        apps[i].Start (Seconds (duration));
+        apps[i].Stop (Seconds (m_totalTime));   
+
+        //
+        of << m_ySize << "x" << m_xSize << " " << m_source << " " << (duration) << " " << m_shuffle << " " << m_sink << " " <<"\n";
+        }
+        of.close ();
+
+
+
+           LtePacketSinkHelper sink (m_protocol,InetSocketAddress (remoteHostAddr, m_dest_port));
+           sink.SetAttribute ("FileName", StringValue (m_filename+"-"+opIdStr));
+           sink.SetAttribute ("DefaultRxSize", UintegerValue(m_pktSize));
+           ApplicationContainer receiver = sink.Install (remoteHost);
+   	   receiver.Start (Seconds (0.1));
+           receiver.Stop (Seconds (m_totalTime+100)); 
+}
+
+
+//
+int
+LteTest::Run ()
+{
+  
+  Packet::EnablePrinting();
+  std::ostringstream tmp;
+  tmp << m_headerFilename << "-qos-" << m_ac <<"-" << m_ac1 << "-ps-" << m_packetSize << "-ps1-" << m_packetSize1 << "-conId-" << m_connectionType << "-" << m_UdpTcpMode << "-" << m_portId << "-";
+   
+  m_filename = tmp.str () ;
+  NodeContainer csma1Nodes;
+  NetDeviceContainer csma1NetDevices;
+  Ipv4InterfaceContainer csma1Interfaces;
+  csma1Nodes.Create (3);
+  csma1NetDevices = CreateNodes (csma1Nodes);
+  csma1Interfaces = InstallInternetStack (csma1Nodes, csma1NetDevices, Ipv4Address ("7.1.0.0") );
+ 
+    
+  
+  NodeContainer csma2Nodes;
+  NetDeviceContainer csma2NetDevices;
+  Ipv4InterfaceContainer csma2Interfaces;
+  csma2Nodes.Create (3);
+  csma2NetDevices = CreateNodes (csma2Nodes);
+  csma2Interfaces = InstallInternetStack (csma2Nodes, csma2NetDevices, Ipv4Address ("7.2.0.0") );
+
+   
+ 
+  //
+  double m_xPosSink, m_yPosSink;
+  m_xPosSink=0.0;
+  m_yPosSink=0.0;
+
+    
+   
+// Create a mesh gateway pointer
+  Ptr<Node> csmaOneGateway = csma1Nodes.Get (2);
+  Ptr<Node> csmaTwoGateway = csma2Nodes.Get (2);
+
+  // Create an epc  
+  Ptr<LteHelper> lteHelper = CreateObject<LteHelper> ();
+ 
+  Ptr<PointToPointEpcHelper> epcHelper = CreateObject<PointToPointEpcHelper> ();
+  lteHelper->SetEpcHelper (epcHelper);
+  lteHelper->SetSchedulerType("ns3::RrFfMacScheduler");
+
+  Ptr<Node> pgw = epcHelper->GetPgwNode ();
+  //Ptr<EpcSgwPgwApplication> pgwApp = epcHelper->GetEpcSgwPgwApplication ();
+  
+
+  // Create a single RemoteHost
+  NodeContainer remoteHostContainer;
+  remoteHostContainer.Create (1);
+  Ptr<Node> remoteHost = remoteHostContainer.Get (0);
+    
+  uint16_t numberOfUes = 2;
+  NodeContainer ueNodes;
+  NodeContainer enbNodes;
+  NodeContainer csmaUeNodes;
+  enbNodes.Create(1);
+  ueNodes.Create (numberOfUes);
+  csmaUeNodes.Add (csmaOneGateway); 
+  csmaUeNodes.Add (csmaTwoGateway);
+
+  MobilityHelper mobility;
+  mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+  mobility.Install (ueNodes);
+
+
+  Ptr<ListPositionAllocator> positionAlloc = CreateObject<ListPositionAllocator> ();
+
+  positionAlloc->Add (Vector(m_xPosSink+300,m_yPosSink+300, 30));
+
+
+  mobility.SetMobilityModel("ns3::ConstantPositionMobilityModel");
+  mobility.SetPositionAllocator(positionAlloc);
+  mobility.Install(enbNodes);
+
+
+  // ********* pgw <----> remoteHost setup ********* //
+  // Create the Internet
+  PointToPointHelper p2ph;
+  p2ph.SetDeviceAttribute ("DataRate", DataRateValue (DataRate ("100Gb/s")));
+  p2ph.SetDeviceAttribute ("Mtu", UintegerValue (1500));
+  p2ph.SetChannelAttribute ("Delay", TimeValue (Seconds (0.010)));
+  NetDeviceContainer internetDevices = p2ph.Install (pgw, remoteHost);
+
+  InternetStackHelper iStack;
+  iStack.Install (remoteHostContainer);
+
+  Ipv4AddressHelper ipv4h;
+  ipv4h.SetBase ("10.1.3.0", "255.255.255.0");
+  Ipv4InterfaceContainer internetIpIfaces = ipv4h.Assign (internetDevices);
+  Ipv4Address remoteHostAddr = internetIpIfaces.GetAddress (1);
+  std::cout << "Remote Host address : " << remoteHostAddr << " Node ID : " << remoteHost->GetId () << std::endl;   
+
+  // setup static default route for remotehost
+  Ipv4StaticRoutingHelper ipv4RoutingHelper;
+  Ptr<Ipv4StaticRouting> remoteHostStaticRouting = ipv4RoutingHelper.GetStaticRouting (remoteHost->GetObject<Ipv4> ());
+  remoteHostStaticRouting->AddNetworkRouteTo (Ipv4Address ("10.1.3.0"), Ipv4Mask ("255.255.255.0"), 1);
+  remoteHostStaticRouting->AddNetworkRouteTo (Ipv4Address ("7.0.0.0"), Ipv4Mask ("255.0.0.0"), 1);
+  // ************ end of pgw <----> remoteHost setup ************* //
+
+ // **************** Ues <------> enB <-------------> pgw setup ****** //
+  //
+  // Install LTE Devices in eNB and UEs
+
+  lteHelper->SetEnbAntennaModelType("ns3::IsotropicAntennaModel");
+  NetDeviceContainer enbLteDevs = lteHelper->InstallEnbDevice (enbNodes);
+ // NetDeviceContainer ueLteDevs = lteHelper->InstallUeDevice (ueNodes);
+  NetDeviceContainer meshUeLteDevs = lteHelper->InstallUeDevice (csmaUeNodes);
+
+  Ipv4InterfaceContainer meshUeIpIfaces;
+  meshUeIpIfaces = epcHelper->AssignUeIpv4Address (NetDeviceContainer (meshUeLteDevs));
+  std::cout << "CSMA UE 1 IP address : " << meshUeIpIfaces.GetAddress (0) << " Node ID : " << csmaUeNodes.Get(0)->GetId () << std::endl;
+  std::cout << "CSMA UE 2 IP address : " << meshUeIpIfaces.GetAddress (1) << " Node ID : " << csmaUeNodes.Get(1)->GetId () << std::endl;
+  
+  Ptr<Ipv4StaticRouting> meshUe1StaticRouting = ipv4RoutingHelper.GetStaticRouting  (csmaOneGateway->GetObject<Ipv4> ());
+  meshUe1StaticRouting->SetDefaultRoute (epcHelper->GetUeDefaultGatewayAddress (), 2);
+  meshUe1StaticRouting->AddNetworkRouteTo (Ipv4Address ("10.1.3.0"), Ipv4Mask ("255.255.255.0"),2);
+  meshUe1StaticRouting->AddNetworkRouteTo (Ipv4Address ("7.2.0.0"), Ipv4Mask ("255.255.255.0"),2);
+  meshUe1StaticRouting->AddNetworkRouteTo (Ipv4Address ("7.1.0.0"), Ipv4Mask ("255.255.255.0"),1);
+
+  
+  Ptr<Ipv4StaticRouting> meshUe2StaticRouting = ipv4RoutingHelper.GetStaticRouting  (csmaTwoGateway->GetObject<Ipv4> ());
+  meshUe2StaticRouting->SetDefaultRoute (epcHelper->GetUeDefaultGatewayAddress (), 2);
+  meshUe2StaticRouting->AddNetworkRouteTo (Ipv4Address ("10.1.3.0"), Ipv4Mask ("255.255.255.0"),2);
+  meshUe2StaticRouting->AddNetworkRouteTo (Ipv4Address ("7.1.0.0"), Ipv4Mask ("255.255.255.0"),2);
+  meshUe2StaticRouting->AddNetworkRouteTo (Ipv4Address ("7.2.0.0"), Ipv4Mask ("255.255.255.0"),1);
+  
+  for (uint16_t i = 0; i < meshUeLteDevs.GetN(); i++)
+    {
+      lteHelper->Attach (meshUeLteDevs.Get(i), enbLteDevs.Get(0));
+    }
+
+    
+// setup static and default route for pgw
+  Ptr<Ipv4StaticRouting> pgwStaticRouting = ipv4RoutingHelper.GetStaticRouting (pgw->GetObject<Ipv4> ());
+  pgwStaticRouting->AddNetworkRouteTo (Ipv4Address ("10.1.1.0"), Ipv4Mask    ("255.255.255.0"), 3);  // the third interface is for enb !!!
+
+  
+  Ipv4InterfaceAddress iaddr = csmaOneGateway->GetObject<Ipv4>()->GetAddress (1,0);
+  Ipv4Address addri = iaddr.GetLocal (); 
+  std::cout << "CSMA-1 Gateway IP address : " << addri << " " << csmaOneGateway->GetObject<Ipv4>()->GetInterfaceForAddress (addri) << "Node ID : " << csmaOneGateway->GetId () << std::endl;   
+
+  iaddr = csmaOneGateway->GetObject<Ipv4>()->GetAddress (2,0);
+  addri = iaddr.GetLocal (); 
+  std::cout << "CSMA-1 Gateway IP address : " << addri << " " << csmaOneGateway->GetObject<Ipv4>()->GetInterfaceForAddress (addri) << "Node ID : " << csmaOneGateway->GetId () << std::endl;   
+
+
+  iaddr = csmaTwoGateway->GetObject<Ipv4>()->GetAddress (1,0);
+  addri = iaddr.GetLocal (); 
+  std::cout << "CSMA-2 Gateway IP address : " << addri << " " << csmaTwoGateway->GetObject<Ipv4>()->GetInterfaceForAddress (addri) << "Node ID : " << csmaTwoGateway->GetId () << std::endl;   
+
+
+  iaddr = csmaTwoGateway->GetObject<Ipv4>()->GetAddress (2,0);
+  addri = iaddr.GetLocal (); 
+  std::cout << "CSMA-2 Gateway IP address : " << addri << " " << csmaTwoGateway->GetObject<Ipv4>()->GetInterfaceForAddress (addri) << "Node ID : " << csmaTwoGateway->GetId () << std::endl;   
+
+
+  iaddr = pgw->GetObject<Ipv4>()->GetAddress (1,0);
+  Ipv4Address pgw1Gateway = iaddr.GetLocal ();
+  std::cout << "EPC Gateway IP address : " << pgw1Gateway << " " << pgw->GetObject<Ipv4>()->GetInterfaceForAddress (pgw1Gateway) << "Node ID : " << pgw->GetId () << std::endl;   
+
+  iaddr = pgw->GetObject<Ipv4>()->GetAddress (2,0);
+  addri = iaddr.GetLocal ();
+  std::cout << "EPC Gateway IP address : " << addri << " " << pgw->GetObject<Ipv4>()->GetInterfaceForAddress (addri) << "Node ID : " << pgw->GetId () << std::endl;   
+
+  // let the pgwApp knows, how to reach the source and destination through UE ip address
+ // pgwApp->AddUeAccessList (Ipv4Address ("7.1.0.2"), Ipv4Address ("7.0.0.2"));  
+ //pgwApp->AddUeAccessList (Ipv4Address ("7.2.0.2"), Ipv4Address ("7.0.0.3"));
+  
+// ******************* Configure static routing for every SMs **************************
+  
+  
+   for (uint16_t i = 0; i < m_ySize*m_xSize-1; i++){ 
+        Ipv4StaticRoutingHelper ipv4RoutingHelper;
+        Ptr<Node> meshNode = csma1Nodes.Get (i);
+        Ptr<Ipv4StaticRouting> meshStaticRouting = ipv4RoutingHelper.GetStaticRouting (meshNode->GetObject<Ipv4> ());
+        NS_ASSERT(meshStaticRouting != 0);
+        std::cout << meshNode->GetId() << " " << csma1Interfaces.GetAddress(i) << " " << csma1Interfaces.GetAddress (m_sink) << std::endl;
+        meshStaticRouting->SetDefaultRoute (csma1Interfaces.GetAddress (m_sink), 1);
+        //
+        meshNode = csma2Nodes.Get (i);
+        meshStaticRouting = ipv4RoutingHelper.GetStaticRouting (meshNode->GetObject<Ipv4> ());
+        NS_ASSERT(meshStaticRouting != 0);
+        std::cout << meshNode->GetId() << " " << csma2Interfaces.GetAddress(i) << " " << csma2Interfaces.GetAddress (m_sink) << std::endl;
+        meshStaticRouting->SetDefaultRoute (csma2Interfaces.GetAddress (m_sink), 1);
+        
+  }
+
+  // ********************** end of static routing configuration ***********************
+
+  InstallApplication(csma1Nodes,remoteHostAddr,remoteHost, 3100, m_packetSize,  4, 5, 2,m_ac,  2); // port, data-size, op-id OMS, AC_VI, privacy=2
+   // InstallApplication(csma1Nodes,csma2Interfaces.GetAddress(1),csma2Nodes.Get(1), 3100, m_packetSize,  10, 5, 2,m_ac,  2); // port, data-size, op-id OMS, AC_VI, privacy=2
+
+  /*V4PingHelper ping = V4PingHelper (remoteHostAddr);
+  NodeContainer pingers;
+  pingers.Add (csma1Nodes.Get (0));
+  pingers.Add (csma1Nodes.Get (1));
+  ApplicationContainer apps = ping.Install (pingers);
+  apps.Start (Seconds (4.0));
+  apps.Stop (Seconds (15.0));
+*/
+ /*  remoteHostAddr = csma1Interfaces.GetAddress (2);
+   remoteHost = csma1Nodes.Get(2);
+   //Ptr<Node> src = csma2Nodes.Get(2); //this for sending in the same side
+   Ptr<Node> src = csma1Nodes.Get(0);
+
+   //Config::SetDefault ("ns3::Ipv4RawSocketImpl::Protocol", StringValue ("2"));
+   InetSocketAddress dst = InetSocketAddress (remoteHostAddr);
+   OnOffHelper onoff = OnOffHelper ("ns3::Ipv4RawSocketFactory", dst);
+   onoff.SetConstantRate (DataRate (2400));
+   onoff.SetAttribute ("PacketSize", UintegerValue (1200));
+   
+   ApplicationContainer apps = onoff.Install (src);
+   apps.Start (Seconds (1.0));
+   apps.Stop (Seconds (m_totalTime+10.0));
+    
+   PacketSinkHelper sink = PacketSinkHelper ("ns3::Ipv4RawSocketFactory", dst);
+   apps = sink.Install (remoteHost);
+   apps.Start (Seconds (0.0));
+   apps.Stop (Seconds (m_totalTime+11.0));
+*/
+   typedef std::pair<Mac48Address, Ipv4Address> AddressMapping;
+   std::vector <AddressMapping> m_ArpList;
+   AddressMapping marp;
+   marp = std::make_pair(Mac48Address("00:00:00:00:00:01"), Ipv4Address ("10.1.3.0"));
+   m_ArpList.push_back(marp);
+   marp = std::make_pair(Mac48Address("00:00:00:00:00:02"), Ipv4Address ("10.1.3.1"));
+   m_ArpList.push_back(marp);
+   marp = std::make_pair(Mac48Address("00:00:00:00:00:03"), Ipv4Address ("10.1.3.2"));
+   m_ArpList.push_back(marp);
+
+   
+   for (uint16_t i = 0; i < csmaUeNodes.GetN(); i++)
+    {
+       Ptr<Node> node = csmaUeNodes.Get(i);
+       Ptr<NetDevice> nd = node->GetDevice(0);
+       Ptr<ArpL3Protocol> arpL3  = node->GetObject<ArpL3Protocol>();
+       Ptr<ArpCache> arpcache = arpL3->FindCache(nd);
+       arpcache->SetAliveTimeout(Seconds (1000));
+       for (long index = 0; index < (long) m_ArpList.size (); index++ ) {
+            ArpCache::Entry *entry = arpcache->Lookup (m_ArpList.at(index).second);
+            if (entry == 0 ) {
+                NS_LOG_INFO ("Add new entry to the ARP cache" );
+                entry = arpcache->Add (m_ArpList.at(index).second);
+            }
+            entry->SetMacAddress (m_ArpList.at(index).first);
+       }
+       Ptr<OutputStreamWrapper> outStream = Create<OutputStreamWrapper> ("arp-info", std::ios::out);
+       arpcache->PrintArpCache(outStream);
+       
+       //ArpCache::Entry *entry = arpcache->Lookup()
+          //if (entry==0):
+          //    entry = arpcache.Add(mininetIPList[x])
+          //entry.SetMacAddress(mininetMacList[x])
+
+    }
+
+   m_timeStart=clock();
+
+  Simulator::Schedule (Seconds (m_totalTime+100), &LteTest::Report, this);
+  Simulator::Stop (Seconds (m_totalTime+1));
+  Simulator::Run ();
+
+  Simulator::Destroy ();
+  m_timeEnd=clock();
+  m_timeTotal=(m_timeEnd - m_timeStart)/(double) CLOCKS_PER_SEC;
+  std::cout << "\n*** Simulation time: " << m_timeTotal << "s\n\n";
+  return 0;
+}
+void
+LteTest::Report ()
+{
+    
+}
+void// m_onTime->SetStream (stream);
+ // m_offTime->SetStream (stream + 1);
+LteTest::CreateCustId()
+{
+  m_consumerId++;
+}
+int
+main (int argc, char *argv[])
+{
+   
+  // LogComponentEnable("V4Ping",LOG_LEVEL_INFO);
+  // LogComponentEnable("V4Ping",LOG_PREFIX_ALL);
+  // LogComponentEnable ("LtePacketSink", LOG_LEVEL_ALL);
+  // LogComponentEnable ("LtePacketSink", LOG_PREFIX_ALL);
+  // LogComponentEnable ("LtePacketSource", LOG_LEVEL_INFO);
+  // LogComponentEnable ("LtePacketSource", LOG_PREFIX_ALL);
+  //  LogComponentEnable ("EpcSgwPgwApplication", LOG_LEVEL_ALL);
+  //  LogComponentEnable ("EpcSgwPgwApplication", LOG_PREFIX_ALL);
+    LogComponentEnable ("TestLteScript", LOG_LEVEL_ALL);
+    LogComponentEnable ("TestLteScript", LOG_PREFIX_ALL);
+
+   // LogComponentEnable ("Icmpv4L4Protocol", LOG_LEVEL_ALL);
+   // LogComponentEnable ("Icmpv4L4Protocol", LOG_PREFIX_ALL);
+   // LogComponentEnable("OnOffApplication",LOG_LEVEL_INFO);
+   // LogComponentEnable("PacketSink",LOG_LEVEL_INFO)  ;
+
+   // LogComponentEnable("OnOffApplication",LOG_PREFIX_ALL);
+   // LogComponentEnable("PacketSink",LOG_PREFIX_ALL) ;
+  
+ //  LogComponentEnable ("EpcTft", LOG_LEVEL_ALL);
+ //  LogComponentEnable ("EpcTft", LOG_PREFIX_ALL);
+ //  LogComponentEnable ("LteUeNetDevice", LOG_LEVEL_INFO);
+ //  LogComponentEnable ("LteUeNetDevice", LOG_PREFIX_ALL);
+ //  LogComponentEnable ("LteEnbNetDevice", LOG_LEVEL_ALL);
+ //  LogComponentEnable ("LteEnbNetDevice", LOG_PREFIX_ALL);
+ //  LogComponentEnable ("EpcEnbApplication", LOG_LEVEL_ALL);
+ //  LogComponentEnable ("EpcEnbApplication", LOG_PREFIX_ALL);
+//   LogComponentEnable ("EpcSgwPgwApplication", LOG_LEVEL_ALL);
+//   LogComponentEnable ("EpcSgwPgwApplication", LOG_PREFIX_ALL);
+ //  LogComponentEnable ("EdcaTxopN", LOG_WARN);
+ //  LogComponentEnable ("EdcaTxopN", LOG_PREFIX_ALL);
+
+//   LogComponentEnable ("Ipv4L3Protocol", LOG_LEVEL_ALL);
+//   LogComponentEnable ("Ipv4L3Protocol", LOG_PREFIX_ALL); 
+//   LogComponentEnable ("EpcEnbApplication", LOG_LEVEL_ALL);
+//   LogComponentEnable ("EpcEnbApplication", LOG_PREFIX_ALL); 
+//   LogComponentEnable ("EpcSgwPgwApplication", LOG_LEVEL_ALL);
+//   LogComponentEnable ("EpcSgwPgwApplication", LOG_PREFIX_ALL); 
+//  LogComponentEnable ("HwmpProtocolMac", LOG_LEVEL_ALL);
+//   LogComponentEnable ("HwmpProtocolMac", LOG_PREFIX_ALL);
+   
+  
+
+
+// LogComponentEnable ("ArpL3Protocol", LOG_LEVEL_ALL);
+// LogComponentEnable ("ArpL3Protocol", LOG_PREFIX_ALL); 
+
+ //LogComponentEnable ("TcpL4Protocol", LOG_LEVEL_ALL);
+ //LogComponentEnable ("TcpL4Protocol", LOG_PREFIX_ALL); 
+ //LogComponentEnable ("TcpSocketBase", LOG_LEVEL_ALL);
+ //LogComponentEnable ("TcpSocketBase", LOG_PREFIX_ALL);
+
+  LteTest t; 
+  t.Configure (argc, argv);
+  t.Run ();
+  return 0;
+}
+
